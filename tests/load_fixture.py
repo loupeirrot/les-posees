@@ -24,7 +24,7 @@ for s, loc, lv in zip(SECTORS.values(), fx["mf"], fx["vis"]):
     h, vis = loc["hourly"], dict(zip(lv["hourly"]["time"], lv["hourly"]["visibility"]))
     for i, t in enumerate(h["time"]):
         dt = datetime.strptime(t, "%Y-%m-%dT%H:%M").replace(tzinfo=PARIS)
-        con.execute("INSERT OR REPLACE INTO weather VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+        con.execute("INSERT OR REPLACE INTO weather (lat, lon, datetime, wind_dir, wind_speed, gusts, cloud, precip, is_forecast, cloud_low, visibility, wind_dir_925, wind_speed_925, fetched_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                     (s["lat"], s["lon"], iso(dt), h["wind_direction_10m"][i], h["wind_speed_10m"][i], h["wind_gusts_10m"][i],
                      None, h["precipitation"][i], 0, h["cloud_cover_low"][i], vis.get(t), h["wind_direction_925hPa"][i],
                      h["wind_speed_925hPa"][i], fx["fetched"]))

@@ -20,7 +20,7 @@ SOURCES = {
     "palombe_comptages": ("Comptages des cols", "palombe.com / GIFS France", "https://www.palombe.com/migration/comptages.php"),
     "palombe_observations": ("Observations des chasseurs", "palombe.com", "https://www.palombe.com/migration/observations.php"),
     "trektellen": ("Comptages Organbidexka", "Trektellen", "https://www.trektellen.org/site/info/2133"),
-    "meteo": ("Météo (modèles Météo-France)", "Open-Meteo", "https://open-meteo.com"),
+    "meteo": ("Météo, modèle AROME", "Météo-France (données publiques)", "https://www.data.gouv.fr/datasets/65bd12d7bfd26e26804204cb"),
 }
 SEASON_ALERT = {  # périodes où une source vide est anormale (mois, jour)
     "palombe_flash": ((10, 1), (11, 20)), "palombe_comptages": ((10, 15), (11, 15)),
@@ -151,7 +151,8 @@ def sources_block(con, today):
 
 
 def freeze(con, fc, today, now_paris):
-    if (now_paris.hour, now_paris.minute) < (6, 30):
+    # uniquement entre 6 h 30 et 7 h 30 : une prévision figée plus tard ne serait plus une prévision
+    if not (6, 30) <= (now_paris.hour, now_paris.minute) < (7, 30):
         return
     for sector, cats in fc.items():
         for cat, days in cats.items():

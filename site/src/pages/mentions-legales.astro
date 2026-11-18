@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import { url } from "../lib/data.js";
 ---
-<Base title="Mentions légales et sources des données" description="Éditeur, hébergement, sources des données (palombe.com, GIFS France, Trektellen, Météo-France via Open-Meteo) et confidentialité." crumbs={[["Mentions légales", url("mentions-legales/")]]} read>
+<Base title="Mentions légales et sources des données" description="Éditeur, hébergement, sources des données (palombe.com, GIFS France, Trektellen, Météo-France) et confidentialité." crumbs={[["Mentions légales", url("mentions-legales/")]]} read>
   <h1>Mentions légales</h1>
   <h2>Éditeur et hébergement</h2>
   <p>Éditeur : à compléter (nom de l'éditeur et moyen de contact). Hébergement : GitHub Pages, GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
@@ -12,7 +12,7 @@ import { url } from "../lib/data.js";
   <ul>
     <li><b>palombe.com</b> (<a href="https://www.palombe.com" rel="noopener">www.palombe.com</a>) : signalements « Flash migration », observations et synthèses de la migration de la palombe. Les comptages journaliers des postes d'Arnéguy, Banca, Sare et Urrugne publiés sur palombe.com sont réalisés par les techniciens des fédérations départementales des chasseurs d'Aquitaine et de Midi-Pyrénées pour le compte du <b>GIFS France</b> (Groupement d'investigation sur la faune sauvage). Données utilisées avec l'accord de palombe.com, reçu le 5 novembre 2026.</li>
     <li><b>Trektellen</b> (<a href="https://www.trektellen.org" rel="noopener">www.trektellen.org</a>) : comptages standardisés de la migration, notamment au col d'Organbidexka, saisis par des observateurs bénévoles. Données utilisées avec l'accord de Trektellen, reçu le 13 novembre 2026.</li>
-    <li><b>Météo</b> : prévisions des modèles de Météo-France (AROME, ARPEGE) diffusées par <a href="https://open-meteo.com" rel="noopener">Open-Meteo</a> (licence CC BY 4.0).</li>
+    <li><b>Météo</b> : modèle AROME de Météo-France, <a href="https://www.data.gouv.fr/datasets/65bd12d7bfd26e26804204cb" rel="noopener">données publiques</a> sous Licence Ouverte Etalab 2.0. Lever du soleil calculé par le site.</li>
     <li><b>Cartographie et zonages</b> : IGN, Géoplateforme (BD TOPO), INPN (sites Natura 2000), sous Licence Ouverte Etalab 2.0. Fond de carte OpenFreeMap, données © contributeurs OpenStreetMap.</li>
   </ul>
   <p>Les chiffres des comptages sont repris tels qu'ils sont publiés, sans correction. Chaque bloc de données renvoie vers sa page d'origine. Les calculs du site (indice de passage, moyennes, distances) sont signalés comme tels et n'engagent pas ces sources.</p>

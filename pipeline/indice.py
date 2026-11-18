@@ -59,13 +59,24 @@ def mean(a):
 def evaluate(h, category, day):
     sr = h.sunrise.get(day.isoformat())
     w10, s10 = h.at(day, 8, "wind_dir"), h.at(day, 8, "wind_speed")
-    if sr is None or w10 is None:
+    if sr is None or w10 is None or s10 is None:
         return None
     sr_min = sr.hour * 60 + sr.minute
     w925, s925 = h.at(day, 8, "wind_dir_925"), h.at(day, 8, "wind_speed_925")
     vis = {hh: h.at(day, hh, "visibility") for hh in range(7, 13)}
-    fog = [hh for hh in range(7, 12) if vis[hh] is not None and vis[hh] < 1000]
-    clear_at = next((hh for hh in range(7, 13) if vis[hh] is not None and vis[hh] >= 1000), None)
+    rh = {hh: h.at(day, hh, "rh2m") for hh in range(7, 13)}
+
+    def foggy(hh):
+        # visibilité si le modèle la donne ; sinon humidité à 2 m de 97 % ou plus (AROME ouvert n'a pas la visibilité)
+        if vis[hh] is not None:
+            return vis[hh] < 1000
+        return rh[hh] is not None and rh[hh] >= 97
+
+    def known(hh):
+        return vis[hh] is not None or rh[hh] is not None
+
+    fog = [hh for hh in range(7, 12) if foggy(hh)]
+    clear_at = next((hh for hh in range(7, 13) if known(hh) and not foggy(hh)), None)
     crit = []
     if category == "palombe":
         rain = sum(h.series(day, 7, 11, "precip"))
@@ -102,6 +113,7 @@ def evaluate(h, category, day):
     if any(c.get("blocking") and not c["ok"] for c in crit):
         level = "low"
     vis_min = min((v for v in vis.values() if v is not None), default=None)
+    rh_max = max((v for v in rh.values() if v is not None), default=None)
     return {
         "level": level, "word": WORDS[level], "score": n, "total": len(main), "criteria": crit,
         "window": {**window, "text": f"{fmt_min(window['start'])} à {fmt_min(window['end'])}"},
@@ -109,11 +121,12 @@ def evaluate(h, category, day):
         "wind": {"dir": round(w10), "speed": round(s10), "dir_short": DIRS_SHORT[sector8(w10)], "dir_name": DIRS[sector8(w10)], "force": force(s10)},
         "wind_800": None if w925 is None else {"dir": round(w925), "speed": round(s925), "dir_short": DIRS_SHORT[sector8(w925)]},
         "reading": reading(category, level, w10, s10),
-        "fog": {"hours": fog, "clear_at": clear_at, "min_visibility_m": None if vis_min is None else round(vis_min)} if fog else None,
+        "fog": {"hours": fog, "clear_at": clear_at, "method": "visibilite" if vis_min is not None else "humidite",
+                "min_visibility_m": None if vis_min is None else round(vis_min), "max_humidity_pct": None if rh_max is None else round(rh_max)} if fog else None,
         "hours": [{"h": hh, "wind_dir": h.at(day, hh, "wind_dir"), "wind_speed": h.at(day, hh, "wind_speed"),
                    "gusts": h.at(day, hh, "gusts"), "wind_dir_800": h.at(day, hh, "wind_dir_925"),
                    "wind_speed_800": h.at(day, hh, "wind_speed_925"), "visibility": h.at(day, hh, "visibility"),
-                   "precip": h.at(day, hh, "precip"), "cloud_low": h.at(day, hh, "cloud_low")} for hh in range(6, 13)],
+                   "precip": h.at(day, hh, "precip"), "cloud_low": h.at(day, hh, "cloud_low"), "humidity": h.at(day, hh, "rh2m")} for hh in range(6, 13)],
     }
 
 

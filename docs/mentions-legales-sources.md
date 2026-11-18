@@ -10,7 +10,7 @@ Les données de migration présentées sur ce site proviennent des sources suiva
 
 - **palombe.com** ([www.palombe.com](https://www.palombe.com)) : signalements « Flash migration », observations et synthèses de la migration de la palombe. Les comptages journaliers des postes d'Arnéguy, Banca, Sare et Urrugne publiés sur palombe.com sont réalisés par les techniciens des fédérations départementales des chasseurs d'Aquitaine et de Midi-Pyrénées pour le compte du **GIFS France** (Groupement d'investigation sur la faune sauvage). Données utilisées avec l'accord de palombe.com, reçu le 5 novembre 2026.
 - **Trektellen** ([www.trektellen.org](https://www.trektellen.org)) : comptages standardisés de la migration, notamment au col d'Organbidexka. Ces données sont saisies par des observateurs bénévoles, et Trektellen est développé par Gerard Troost. Données utilisées avec l'accord de Trektellen, reçu le 13 novembre 2026.
-- **Météo** : prévisions des modèles de Météo-France (AROME, ARPEGE), diffusées par [Open-Meteo](https://open-meteo.com) (licence CC BY 4.0).
+- **Météo** : modèle AROME de Météo-France, [données publiques](https://www.data.gouv.fr/datasets/65bd12d7bfd26e26804204cb) sous Licence Ouverte Etalab 2.0.
 - **Radar ornithologique** : profils verticaux issus des radars météorologiques du réseau européen OPERA, mis à disposition par [Aloft](https://aloftdata.eu) (licence CC BY 4.0).
 - **Cartographie et zonages** : IGN, Géoplateforme (BD TOPO), et INPN (sites Natura 2000), sous Licence Ouverte Etalab 2.0.
 

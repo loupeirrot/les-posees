@@ -3,3 +3,4 @@ beautifulsoup4==4.12.3
 jsonschema==4.23.0
 pillow==11.0.0
 certifi
+eccodes==2.50.1

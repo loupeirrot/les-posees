@@ -20,7 +20,7 @@ GitHub Actions (toutes les 15 min du 15/09 au 30/11, une fois par jour sinon)
 | palombe.com, observations | `collect_palombe_observations.py` | 1 h | département et vols par classe ; ni pseudo, ni lieu-dit, ni texte |
 | palombe.com, comptages des cols (GIFS France) | `collect_palombe_comptages.py` | 1 fois par jour après 20 h 30 | chiffres bruts, saisons 2011 à 2026 |
 | Trektellen (Organbidexka) | `collect_trektellen.py` | 1 fois par jour | bloqué par la protection anti-robots : export à demander |
-| Open-Meteo (modèles Météo-France) | `collect_meteo.py` | 1 h | voir « Limites » |
+| Météo-France, AROME 0,025° (données publiques, sans clé) | `collect_meteofrance.py` | à chaque nouveau run (toutes les 3 h) | fichiers GRIB2 ; vent à 925 hPa lu par requêtes partielles |
 
 La carte Flash zoomée sur le Sud-Ouest pour la saison en cours est réservée aux abonnés de palombe.com : elle n'est pas utilisée.
 
@@ -47,7 +47,7 @@ Aperçu avec un relevé météo réel de test (30/10/2026) : voir `tests/load_fi
 4. Lancer le workflow « Collecte et publication » à la main une première fois (case « Interroger toutes les sources »).
 
 ## Limites
-- **Météo** : le `robots.txt` de api.open-meteo.com interdit tout (`Disallow: /`). Les collecteurs respectent robots.txt, donc la météo est marquée « bloquée » et le site passe en mode dégradé (signalements et comptages seulement). Décision à prendre : autoriser l'API Open-Meteo (dont les conditions d'utilisation permettent l'usage gratuit non commercial), ou passer à l'API Météo-France (clé gratuite).
+- **Météo** : AROME ouvert ne fournit pas la visibilité ; la brume est estimée par l'humidité à 2 m (97 % ou plus). Un nouveau run AROME prend environ 5 min de traitement (téléchargement des fichiers de surface).
 - **Trektellen** : vérification anti-robots Cloudflare (403). Non contournée. Il faut un export ou une autorisation du User-Agent.
 - **Flash** : positions calées à 3 à 5 km près, puis arrondies à environ 10 km. Le regroupement des minutes (5 min) retrouve 16 signalements le 17/11/2026 quand palombe.com en annonce 17. Les classes de taille 1 à 5 sont supposées correspondre aux classes de palombe.com (1-10 … +300).
 - **Indice** : règle provisoire, non validée (voir la page Méthode).

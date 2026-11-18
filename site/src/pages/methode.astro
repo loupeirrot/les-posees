@@ -10,7 +10,7 @@ import { url } from "../lib/data.js";
   <ol>
     <li>Vent de secteur nord à sud-est à 8 h.</li>
     <li>Pas de pluie entre 7 h et 11 h (moins de 0,3 mm).</li>
-    <li>Ciel lisible : au plus une heure de brume (visibilité sous 1 km) et des nuages bas sous 80 %.</li>
+    <li>Ciel lisible : au plus une heure de brume probable (humidité à 2 m de 97 % ou plus) et des nuages bas sous 80 %.</li>
     <li>Pas de coup de vent : rafales sous 50 km/h et vent sous 30 km/h. Ce critère est bloquant.</li>
   </ol>
   <p>Trois critères sur trois : « Ça devrait passer ». Deux sur trois : « Possible ». Moins, ou coup de vent : « Peu probable ». La fenêtre horaire part d'un quart d'heure avant le lever du soleil, ou de la levée de la brume, et court environ trois heures.</p>
@@ -28,7 +28,7 @@ import { url } from "../lib/data.js";
 
   <h2>Les données</h2>
   <ul>
-    <li>Météo : modèles Météo-France (AROME, ARPEGE) par Open-Meteo, mise à jour toutes les heures.</li>
+    <li>Météo : modèle AROME de Météo-France (maille de 2,5 km), données publiques, nouveau calcul toutes les 3 heures. AROME ouvert ne donne pas la visibilité : la brume est estimée quand l'humidité à 2 m atteint 97 %.</li>
     <li>Signalements Flash, observations et comptages des cols : palombe.com et GIFS France, toutes les 15 minutes pour le Flash, chaque heure pour les observations, chaque soir pour les cols.</li>
     <li>Comptages d'Organbidexka : Trektellen.</li>
   </ul>

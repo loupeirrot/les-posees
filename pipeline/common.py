@@ -111,6 +111,16 @@ def get(url, *, params=None, expect_json=False, timeout=30, retries=2, headers=N
     raise last
 
 
+def get_bytes(url, *, start=None, length=None, timeout=60):
+    """Téléchargement binaire (entier ou partiel), avec les mêmes règles que get()."""
+    if not allowed_by_robots(url):
+        raise Blocked(f"robots.txt interdit {url}")
+    headers = {"Range": f"bytes={start}-{start + length - 1}"} if start is not None else None
+    r = _session.get(url, headers=headers, timeout=timeout)
+    r.raise_for_status()
+    return r.content
+
+
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS observations (
   obs_key TEXT PRIMARY KEY,
@@ -146,6 +156,9 @@ def db():
     con = sqlite3.connect(DB_PATH)
     con.row_factory = sqlite3.Row
     con.executescript(SCHEMA)
+    cols = {r["name"] for r in con.execute("PRAGMA table_info(weather)")}
+    if "rh2m" not in cols:
+        con.execute("ALTER TABLE weather ADD COLUMN rh2m REAL")  # humidité à 2 m (AROME), sert à estimer la brume
     return con
 
 
@@ -183,9 +196,10 @@ def run_collector(name, url, fn, enabled=True, every_minutes=15):
     if not due(con, name, every_minutes):
         return
     try:
-        n = fn(con)
+        res = fn(con)
+        n, note = res if isinstance(res, tuple) else (res, "")
         mark_fetched(con, name)
-        set_status(con, name, "ok" if n else "vide", n, "", url)
+        set_status(con, name, "ok" if n else "vide", n, note, url)
         print(f"[{name}] {n} lignes")
     except Blocked as e:
         mark_fetched(con, name)

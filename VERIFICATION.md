@@ -40,7 +40,7 @@ ALERTE meteo : bloquée robots.txt interdit https://api.open-meteo.com/v1/foreca
 L'alerte se déclenche. Dans le workflow, elle ouvre une issue : la panne réelle de la météo a ouvert https://github.com/loupeirrot/les-posees/issues/1 (étiquette `alerte-source`), sans doublon aux exécutions suivantes. La fermeture automatique au retour à la normale n'a pas encore pu être observée.
 
 ## Ce qui n'a pas pu être vérifié
-- **Météo réelle en production** : bloquée par le robots.txt d'Open-Meteo (décision à prendre). Le mode complet n'a été vu qu'avec le relevé réel du 30/10/2026.
+- **Météo** : passée le 18/11/2026 sur les données publiques AROME de Météo-France (run de 03 h UTC lu en local : 480 relevés horaires, vent à 925 hPa compris). La justesse du modèle n'est pas évaluée ici, et l'estimation de la brume par l'humidité n'est pas validée.
 - **Trektellen** : la lecture du tableau des totaux n'a jamais pu être testée (page derrière la protection anti-robots).
 - **Correspondance des classes de taille Flash** (1 à 5 contre 1-10 … +300) : supposée, pas confirmée par palombe.com.
 - **Regroupement des signalements Flash** : 16 trouvés contre 17 annoncés le 17/11/2026.

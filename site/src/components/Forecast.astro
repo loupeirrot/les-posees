@@ -12,9 +12,12 @@ const meteo = source("meteo");
 const arrow = (deg) => `rotate(${(deg + 180) % 360} 12 12)`;
 const vis = (v) => (v === null || v === undefined ? "–" : v >= 10000 ? "10+" : (v / 1000).toFixed(1).replace(".", ","));
 const fogText = f?.fog
-  ? `Visibilité sous 1 km à ${f.fog.hours.map((h) => h + " h").join(", ")} (minimum ${f.fog.min_visibility_m} m). ` +
+  ? (f.fog.method === "visibilite"
+      ? `Visibilité sous 1 km à ${f.fog.hours.map((h) => h + " h").join(", ")} (minimum ${f.fog.min_visibility_m} m). `
+      : `Brume probable à ${f.fog.hours.map((h) => h + " h").join(", ")} : air presque saturé (humidité jusqu'à ${f.fog.max_humidity_pct} %). `) +
     (f.fog.clear_at ? `Levée prévue vers ${f.fog.clear_at} h : vols peu visibles avant.` : "Pas de levée prévue avant midi.")
   : null;
+const hasVis = f?.hours?.some((h) => h.visibility !== null && h.visibility !== undefined);
 ---
 <div class="fc" data-sector={sector} data-cat={cat} data-day={day} hidden={!visible}>
   {f ? (
@@ -25,7 +28,7 @@ const fogText = f?.fog
           <p class="verdict-word">{f.word}</p>
           <p class="verdict-sub">{CATEGORIES[cat]} · {name} · {frDay(day)}</p>
         </div>
-        <p class="verdict-foot"><b>{f.score} critère{f.score > 1 ? "s" : ""} sur {f.total}</b><span>Indice provisoire, en cours de validation</span></p>
+        <p class="verdict-foot"><b>{f.score} critère{f.score > 1 ? "s" : ""} sur {f.total}{f.criteria.some((c) => c.blocking && !c.ok) ? " · coup de vent" : ""}</b><span>Indice provisoire, en cours de validation</span></p>
       </section>
 
       <section class="facts" aria-label="L'essentiel">
@@ -54,18 +57,20 @@ const fogText = f?.fog
         <summary><h2 style="display:inline">Heure par heure</h2></summary>
         <div class="table-wrap">
           <table>
-            <thead><tr><th scope="col"><span class="sr">Heure</span></th>{f.hours.map((h) => <th scope="col">{h.h} h</th>)}</tr></thead>
+            <thead><tr><th scope="col"><span class="sr">Heure</span></th>{f.hours.map((h) => <th scope="col">{h.h}h</th>)}</tr></thead>
             <tbody>
               <tr><th scope="row">Vent sol</th>{f.hours.map((h) => <td>{h.wind_dir === null ? "–" : <><svg class="arrow" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><g transform={arrow(h.wind_dir)}><path d="M12 3v16M6 9l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></g></svg>{Math.round(h.wind_speed)}</>}</td>)}</tr>
               <tr><th scope="row">Rafales</th>{f.hours.map((h) => <td>{h.gusts === null ? "–" : Math.round(h.gusts)}</td>)}</tr>
               <tr><th scope="row">800 m</th>{f.hours.map((h) => <td>{h.wind_dir_800 === null ? "–" : <><svg class="arrow" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><g transform={arrow(h.wind_dir_800)}><path d="M12 3v16M6 9l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></g></svg>{Math.round(h.wind_speed_800)}</>}</td>)}</tr>
-              <tr><th scope="row">Visib. km</th>{f.hours.map((h) => <td class={h.visibility !== null && h.visibility < 1000 ? "fog" : undefined}>{vis(h.visibility)}</td>)}</tr>
+              {hasVis
+                ? <tr><th scope="row">Visib. km</th>{f.hours.map((h) => <td class={h.visibility !== null && h.visibility < 1000 ? "fog" : undefined}>{vis(h.visibility)}</td>)}</tr>
+                : <tr><th scope="row">Humidité %</th>{f.hours.map((h) => <td class={h.humidity >= 97 ? "fog" : undefined}>{h.humidity === null || h.humidity === undefined ? "–" : Math.round(h.humidity)}</td>)}</tr>}
               <tr><th scope="row">Pluie mm</th>{f.hours.map((h) => <td class={h.precip >= 0.3 ? "rain" : undefined}>{h.precip === null ? "–" : h.precip.toFixed(1).replace(".", ",")}</td>)}</tr>
-              <tr><th scope="row">Nuages bas</th>{f.hours.map((h) => <td>{h.cloud_low === null ? "–" : Math.round(h.cloud_low) + " %"}</td>)}</tr>
+              <tr><th scope="row">Nuages bas %</th>{f.hours.map((h) => <td>{h.cloud_low === null || h.cloud_low === undefined ? "–" : Math.round(h.cloud_low)}</td>)}</tr>
             </tbody>
           </table>
         </div>
-        <p class="src">Vent en km/h, la flèche montre où il pousse. Modèles Météo-France via <a href="https://open-meteo.com" rel="noopener">Open-Meteo</a>.</p>
+        <p class="src">Vent en km/h, la flèche montre où il pousse. Modèle AROME de Météo-France, <a href="https://www.data.gouv.fr/datasets/65bd12d7bfd26e26804204cb" rel="noopener">données publiques</a>.</p>
       </details>
     </div>
   ) : (

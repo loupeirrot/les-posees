@@ -65,7 +65,7 @@ jobs:
         working-directory: pipeline
         run: |
           pip install -q -r ../requirements.txt
-          python collect_meteo.py
+          python collect_meteofrance.py
           python collect_palombe_flash.py
           python collect_palombe_observations.py
           python collect_palombe_comptages.py
