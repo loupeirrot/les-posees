@@ -73,9 +73,6 @@ const fmt = (iso) => new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "
 const offline = () => showBanner(`Hors ligne : prévision enregistrée du ${fmt(generated)}.`);
 addEventListener("offline", offline);
 if (!navigator.onLine) offline();
-if (Date.now() - new Date(generated).getTime() > 45 * 60 * 1000 && navigator.onLine) {
-  showBanner(`Données du ${fmt(generated)} : la mise à jour automatique est en retard.`);
-}
 fetch(base + "data/latest.json", { cache: "no-store" })
   .then((r) => (r.ok ? r.json() : null))
   .then((d) => {

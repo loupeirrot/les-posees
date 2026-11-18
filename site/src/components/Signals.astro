@@ -4,7 +4,7 @@ import Icon from "./Icon.astro";
 import Photo from "./Photo.astro";
 import Topo from "./Topo.astro";
 import Torn from "./Torn.astro";
-import { latest, frTime, frDay, frDateTime, nf, deptName, source } from "../lib/data.js";
+import { latest, frTime, frDay, nf, deptName } from "../lib/data.js";
 
 const fl = latest.flash;
 const up = fl.derive_dernier_signal_amont;
@@ -15,8 +15,6 @@ const cmp = c?.derive_comparaison;
 const total = (d, k) => d?.postes.reduce((a, p) => a + (p[k]?.oiseaux ?? 0), 0);
 const obs = latest.observations;
 const obsDays = Object.keys(obs.par_jour).sort().reverse();
-const srcFlash = source("palombe_flash");
-const srcCols = source("palombe_comptages");
 ---
 <section class="band" aria-labelledby="amont">
   <div class="wrap sec split">
@@ -35,7 +33,6 @@ const srcCols = source("palombe_comptages");
         <div><span class="k">Allers, 150 km, 24 h</span><span class="v">{aller}</span></div>
         <div><span class="k">Reculs, 150 km, 24 h</span><span class="v retour">{recul}</span></div>
       </div>
-      <p class="src">Source : <a href={srcFlash.url} rel="noopener">Flash migration de palombe.com</a>. Position à 10 km près, sans nom d'observateur ; taille des vols selon les classes de palombe.com.</p>
     </div>
   </div>
 </section>
@@ -70,7 +67,6 @@ const srcCols = source("palombe_comptages");
         {cmp?.moyenne_cumul_aller_a_date && (
           <p>Depuis le début de la saison : <b class="num">{nf(c.cumul_saison_aller_4_postes)}</b> palombes à l'aller, contre <span class="num">{nf(cmp.moyenne_cumul_aller_a_date)}</span> en moyenne à la même date ({cmp.saisons[0]}–{cmp.saisons.at(-1)}){cmp.ecart_cumul_pct !== null ? `, soit ${cmp.ecart_cumul_pct > 0 ? "+" : ""}${cmp.ecart_cumul_pct} %` : ""}.</p>
         )}
-        <p class="src">Comptages réalisés par les techniciens des fédérations pour le GIFS France, publiés sur <a href={c.J.url} rel="noopener">palombe.com</a>. Lu le {srcCols.last_ok_at ? frDateTime(srcCols.last_ok_at) : "–"}.</p>
       </div>
     </div>
     <Torn color="var(--paper)" seed={23} flip />
@@ -103,6 +99,5 @@ const srcCols = source("palombe_comptages");
         </div>
       );
     })}
-    <p class="src">Source : <a href={obs.url} rel="noopener">observations de palombe.com</a>, regroupées par département (Landes en orange). Ni nom, ni lieu-dit.</p>
   </div>
 </section>

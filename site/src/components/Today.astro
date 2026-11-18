@@ -3,7 +3,7 @@
 import Forecast from "./Forecast.astro";
 import Icon from "./Icon.astro";
 import Photo from "./Photo.astro";
-import { latest, url, SECTOR_KEYS, CATEGORIES, days, defaultDayIndex, frDateTime, frDay } from "../lib/data.js";
+import { latest, url, SECTOR_KEYS, CATEGORIES, days, defaultDayIndex, frDay } from "../lib/data.js";
 
 const { sector = "seignosse", where } = Astro.props;
 const [d0, d1] = days();
@@ -40,6 +40,5 @@ const blocks = (part) => SECTOR_KEYS.flatMap((s) => Object.keys(CATEGORIES).flat
 <section class="band" aria-label="Le détail de la matinée">
   <div class="wrap sec" style="padding-top:28px">
     {blocks("details").map((b) => <Forecast sector={b.s} cat={b.c} day={b.d} visible={b.visible} part="details" />)}
-    <p class="src"><span class:list={["status-dot", latest.mode === "degrade" && "warn"]}></span>Prévision calculée le <span class="num">{frDateTime(latest.generated_at)}</span> · <a href={url("etat/")}>état des sources</a></p>
   </div>
 </section>

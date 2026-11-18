@@ -2,13 +2,12 @@
 // Prévision pour un secteur, une catégorie et un jour. part="verdict" (dans le héros) ou part="details" (sous le héros).
 // Tous les blocs sont dans le HTML ; le script n'affiche que celui qui correspond aux choix.
 import Icon from "./Icon.astro";
-import { latest, frDay, CATEGORIES, source, frDateTime } from "../lib/data.js";
+import { latest, frDay, CATEGORIES } from "../lib/data.js";
 
 const { sector, cat, day, visible = false, part } = Astro.props;
 const f = latest.forecast[sector]?.[cat]?.[day] ?? null;
 const name = latest.sectors[sector].name;
 const ICON = { good: "check-circle", maybe: "circle-half", low: "x-circle" };
-const meteo = source("meteo");
 const arrow = (deg) => `rotate(${(deg + 180) % 360} 12 12)`;
 const vis = (v) => (v === null || v === undefined ? "–" : v >= 10000 ? "10+" : (v / 1000).toFixed(1).replace(".", ","));
 const [w0, w1] = f ? f.window.text.split(" à ") : [];
@@ -31,7 +30,7 @@ const dir = (d) => ({ N: "Nord", E: "Est", S: "Sud", O: "Ouest" })[d] ?? d;
         <p class="verdict-word display">{f.word}</p>
       </div>
       <p class="verdict-sub">{CATEGORIES[cat]} · {name} · {frDay(day)}</p>
-      <p class="verdict-foot"><b>{f.score} critère{f.score > 1 ? "s" : ""} sur {f.total}{blocked ? " · coup de vent" : ""}</b><span>Indice provisoire, en cours de validation</span></p>
+      <p class="verdict-foot"><b>{f.score} critère{f.score > 1 ? "s" : ""} sur {f.total}{blocked ? " · coup de vent" : ""}</b></p>
     </section>
   ) : (
     <section class="verdict" data-level="none" aria-label="Verdict du matin">
@@ -40,7 +39,7 @@ const dir = (d) => ({ N: "Nord", E: "Est", S: "Sud", O: "Ouest" })[d] ?? d;
         <p class="verdict-word display">Indisponible</p>
       </div>
       <p class="verdict-sub">{CATEGORIES[cat]} · {name} · {frDay(day)}</p>
-      <p class="verdict-foot"><span>La météo n'a pas pu être lue{meteo?.checked_at ? ` (dernier essai le ${frDateTime(meteo.checked_at)})` : ""}. Signalements et comptages restent à jour plus bas.</span></p>
+      <p class="verdict-foot"><span>Météo momentanément indisponible.</span></p>
     </section>
   ))}
 
@@ -67,7 +66,6 @@ const dir = (d) => ({ N: "Nord", E: "Est", S: "Sud", O: "Ouest" })[d] ?? d;
               </li>
             ))}
           </ul>
-          <p class="src">Règle simple, écrite à partir du vent, de la pluie et de la brume. Pas encore validée sur le terrain : voir <a href={import.meta.env.BASE_URL + "methode/"}>comment on calcule</a>.</p>
         </div>
       </details>
       <details class="fold hours">
@@ -88,7 +86,6 @@ const dir = (d) => ({ N: "Nord", E: "Est", S: "Sud", O: "Ouest" })[d] ?? d;
               </tbody>
             </table>
           </div>
-          <p class="src">Vent en km/h, la flèche montre où il pousse. Modèle AROME de Météo-France, <a href="https://www.data.gouv.fr/datasets/65bd12d7bfd26e26804204cb" rel="noopener">données publiques</a>.</p>
         </div>
       </details>
     </div>

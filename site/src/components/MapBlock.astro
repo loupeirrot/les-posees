@@ -17,7 +17,6 @@ const payload = {
     </div>
     <div class="map-box" id="map-box" hidden><div id="map"></div></div>
     <button class="btn" id="map-load" type="button"><Icon name="map-trifold" size={22} />Afficher la carte</button>
-    <p class="src">Chargée à la demande pour économiser le réseau. Fond © <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a>, données © contributeurs <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>.</p>
     <script type="application/json" id="map-data" set:html={JSON.stringify(payload)} />
   </div>
 </section>
