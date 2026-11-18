@@ -31,13 +31,16 @@ Trois exécutions consécutives réussies le 18/11/2026 (collecte, validation, c
 
 Site en ligne : https://loupeirrot.github.io/les-posees/. Contrôlé : 13 liens internes sans erreur, image de partage, manifeste, sitemap, `data/latest.json`, polices chargées, service worker actif.
 
+## 3 bis. Météo AROME en production
+Exécution forcée du 18/11/2026 (https://github.com/loupeirrot/les-posees/actions/runs/44286035338, 9 min 17 s pour le premier passage qui traite deux runs AROME) : `[meteo] 480 lignes`, `latest.json : complet`. Le site en ligne affiche le verdict (Seignosse, 18/11 : « Peu probable », 1 critère sur 3 et coup de vent, vent d'ouest 21 km/h à 8 h).
+
 ## 4. Test de panne
 Flash coupé (`PALOMBE_COM_ENABLED=false`) sur une copie de la base, puis `build_json.py` et `alerts.py` :
 ```
 ALERTE palombe_flash : coupée Source désactivée par interrupteur
 ALERTE meteo : bloquée robots.txt interdit https://api.open-meteo.com/v1/forecast?...
 ```
-L'alerte se déclenche. Dans le workflow, elle ouvre une issue : la panne réelle de la météo a ouvert https://github.com/loupeirrot/les-posees/issues/1 (étiquette `alerte-source`), sans doublon aux exécutions suivantes. La fermeture automatique au retour à la normale n'a pas encore pu être observée.
+L'alerte se déclenche. Dans le workflow, elle ouvre une issue : la panne réelle de la météo a ouvert https://github.com/loupeirrot/les-posees/issues/1 (étiquette `alerte-source`), sans doublon aux exécutions suivantes. Quand la météo AROME a remplacé Open-Meteo, l'issue s'est fermée d'elle-même (exécution https://github.com/loupeirrot/les-posees/actions/runs/44286035338).
 
 ## Ce qui n'a pas pu être vérifié
 - **Météo** : passée le 18/11/2026 sur les données publiques AROME de Météo-France (run de 03 h UTC lu en local : 480 relevés horaires, vent à 925 hPa compris). La justesse du modèle n'est pas évaluée ici, et l'estimation de la brume par l'humidité n'est pas validée.
