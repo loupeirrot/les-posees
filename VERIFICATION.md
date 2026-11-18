@@ -24,7 +24,12 @@ Page relue : https://www.palombe.com/migration/comptages.php?year=2026 (relectur
 `python pipeline/validate.py` : « latest.json valide », sur les données réelles du 18/11/2026 (mode dégradé) et sur l'aperçu avec la météo de test du 30/10/2026 (mode complet).
 
 ## 3. Workflow GitHub Actions
-**Non vérifié** : le dépôt n'est pas encore créé sur GitHub. Il faudra trois exécutions consécutives réussies après la mise en ligne. Les liens seront ajoutés ici.
+Trois exécutions consécutives réussies le 18/11/2026 (collecte, validation, construction, déploiement) :
+- https://github.com/loupeirrot/les-posees/actions/runs/44282600404 (déclenchée par le push : première base, rattrapage des saisons 2011 à 2026)
+- https://github.com/loupeirrot/les-posees/actions/runs/44282951924 (« base restaurée » depuis la branche `data`)
+- https://github.com/loupeirrot/les-posees/actions/runs/44283128472 (« base restaurée » ; collecteurs non relancés avant 15 min, comme prévu)
+
+Site en ligne : https://loupeirrot.github.io/les-posees/. Contrôlé : 13 liens internes sans erreur, image de partage, manifeste, sitemap, `data/latest.json`, polices chargées, service worker actif.
 
 ## 4. Test de panne
 Flash coupé (`PALOMBE_COM_ENABLED=false`) sur une copie de la base, puis `build_json.py` et `alerts.py` :
@@ -32,7 +37,7 @@ Flash coupé (`PALOMBE_COM_ENABLED=false`) sur une copie de la base, puis `build
 ALERTE palombe_flash : coupée Source désactivée par interrupteur
 ALERTE meteo : bloquée robots.txt interdit https://api.open-meteo.com/v1/forecast?...
 ```
-L'alerte se déclenche. En local, sans jeton GitHub, elle s'affiche seulement. Dans le workflow, elle ouvre une issue (étiquette `alerte-source`), qui se ferme seule au retour à la normale. **La création réelle d'issue n'est pas vérifiée** tant que le dépôt n'existe pas.
+L'alerte se déclenche. Dans le workflow, elle ouvre une issue : la panne réelle de la météo a ouvert https://github.com/loupeirrot/les-posees/issues/1 (étiquette `alerte-source`), sans doublon aux exécutions suivantes. La fermeture automatique au retour à la normale n'a pas encore pu être observée.
 
 ## Ce qui n'a pas pu être vérifié
 - **Météo réelle en production** : bloquée par le robots.txt d'Open-Meteo (décision à prendre). Le mode complet n'a été vu qu'avec le relevé réel du 30/10/2026.
@@ -40,4 +45,4 @@ L'alerte se déclenche. En local, sans jeton GitHub, elle s'affiche seulement. D
 - **Correspondance des classes de taille Flash** (1 à 5 contre 1-10 … +300) : supposée, pas confirmée par palombe.com.
 - **Regroupement des signalements Flash** : 16 trouvés contre 17 annoncés le 17/11/2026.
 - **Lighthouse et test sur un téléphone d'entrée de gamme** : non faits. Page d'accueil de 22 Ko compressée, sans JavaScript bloquant.
-- **Hors ligne (service worker)** : il ne s'active qu'en HTTPS, donc il n'a pas été testé en local.
+- **Hors ligne** : le service worker s'enregistre sur le site en ligne. Le mode avion n'a pas été testé sur un vrai téléphone.
