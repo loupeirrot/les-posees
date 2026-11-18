@@ -1,10 +1,12 @@
 ---
+import PageHero from "../components/PageHero.astro";
 import Base from "../layouts/Base.astro";
 import { url } from "../lib/data.js";
 ---
-<Base title="Comment on calcule l'indice de passage" description="La règle utilisée pour la palombe et les grives, les données, et ce que donne le test sur quatre saisons de radar. Tout est publié, y compris ce qui ne marche pas encore." crumbs={[["Méthode", url("methode/")]]} read>
-  <h1>Comment on calcule</h1>
-  <p class="lead">Le verdict du matin vient d'une règle simple, écrite à partir du vent, de la pluie et de la brume. Elle est provisoire : on la publie avec ses résultats, y compris quand ils sont mauvais.</p>
+<Base title="Comment on calcule l'indice de passage" description="La règle utilisée pour la palombe et les grives, les données, et ce que donne le test sur quatre saisons de radar. Tout est publié, y compris ce qui ne marche pas encore." crumbs={[["Méthode", url("methode/")]]}>
+  <PageHero photo="aube-pins" alt="Pins landais dans la brume à l'aube" crumbs={[["Méthode", url("methode/")]]}>Comment on calcule</PageHero>
+  <div class="band"><div class="prose">
+  <p class="lede">Le verdict du matin vient d'une règle simple, écrite à partir du vent, de la pluie et de la brume. Elle est provisoire : on la publie avec ses résultats, y compris quand ils sont mauvais.</p>
 
   <h2>Palombe : quatre critères</h2>
   <ol>
@@ -33,4 +35,5 @@ import { url } from "../lib/data.js";
     <li>Comptages d'Organbidexka : Trektellen.</li>
   </ul>
   <p>Chaque matin à 6 h 30, la prévision est figée et archivée avec son empreinte, pour qu'on puisse la comparer après coup : voir les <a href={url("archives/")}>archives</a>. L'état de chaque source est sur la page <a href={url("etat/")}>état des sources</a>.</p>
+  </div></div>
 </Base>

@@ -1,5 +1,5 @@
 // Hors ligne : pages et latest.json en « réseau d'abord, cache sinon » ; polices, styles et images en cache d'abord.
-const VERSION = "v1";
+const VERSION = "v2";
 const CACHE = "les-posees-" + VERSION;
 const scope = self.registration.scope;
 

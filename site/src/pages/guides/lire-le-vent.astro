@@ -1,4 +1,5 @@
 ---
+import PageHero from "../../components/PageHero.astro";
 import Base from "../../layouts/Base.astro";
 import { url } from "../../lib/data.js";
 const rows = [
@@ -12,9 +13,10 @@ const rows = [
   ["Nord-ouest", "Porteur mais venu de la mer : les vols restent plutôt à l'intérieur."],
 ];
 ---
-<Base title="Lire le vent pour la palombe sur la dune landaise" description="Comment le vent du matin change la route et la hauteur des vols de palombes entre Labenne et Seignosse : la grille de lecture utilisée par le site." crumbs={[["Lire le vent", url("guides/lire-le-vent/")]]} read>
-  <h1>Lire le vent</h1>
-  <p class="lead">Le site traduit le vent de 8 h en une phrase. Voici la grille utilisée. Elle reprend ce que disent les chasseurs de la côte et sera corrigée avec leurs observations.</p>
+<Base title="Lire le vent pour la palombe sur la dune landaise" description="Comment le vent du matin change la route et la hauteur des vols de palombes entre Labenne et Seignosse : la grille de lecture utilisée par le site." crumbs={[["Lire le vent", url("guides/lire-le-vent/")]]}>
+  <PageHero photo="embrasee" alt="Pins landais à contre-jour, ciel embrasé" crumbs={[["Lire le vent", url("guides/lire-le-vent/")]]}>Lire le vent</PageHero>
+  <div class="band"><div class="prose">
+  <p class="lede">Le site traduit le vent de 8 h en une phrase. Voici la grille utilisée. Elle reprend ce que disent les chasseurs de la côte et sera corrigée avec leurs observations.</p>
   <div class="table-wrap">
     <table>
       <thead><tr><th scope="col">Vent venant du</th><th scope="col" style="text-align:left">Ce que ça donne</th></tr></thead>
@@ -31,4 +33,5 @@ const rows = [
   <h2>Au sol et à 800 m</h2>
   <p>Le vent au sol dit ce qui se passe au poste ; le vent à 800 m (niveau 925 hPa) dit ce que rencontrent les vols en altitude. Quand les deux divergent, la hauteur des vols change souvent en cours de matinée.</p>
   <p>Voir aussi : <a href={url("methode/")}>comment l'indice est calculé</a>.</p>
+  </div></div>
 </Base>

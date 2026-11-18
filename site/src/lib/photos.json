@@ -1,0 +1,86 @@
+{
+ "aube-pins": {
+  "title": "Forêt des Landes, ombres majestueuses.jpg",
+  "author": "Marie Anne ROBERT",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:For%C3%AAt_des_Landes,_ombres_majestueuses.jpg",
+  "w": 1920,
+  "h": 1440,
+  "focus": [
+   0.5,
+   0.6
+  ]
+ },
+ "embrasee": {
+  "title": "Forêt des Landes embrasée.jpg",
+  "author": "Marie Anne ROBERT",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:For%C3%AAt_des_Landes_embras%C3%A9e.jpg",
+  "w": 1920,
+  "h": 1440,
+  "focus": [
+   0.5,
+   0.6
+  ]
+ },
+ "vol-palombes": {
+  "title": "Noordwijk - Group of Houtduif (Columba palumbus).jpg",
+  "author": "Rudolphous",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Noordwijk_-_Group_of_Houtduif_(Columba_palumbus).jpg",
+  "w": 1920,
+  "h": 1280,
+  "focus": [
+   0.5,
+   0.5
+  ]
+ },
+ "palombe-vol": {
+  "title": "Woodpigeon (Columba palumbus) in flight Rowant.jpg",
+  "author": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Woodpigeon_(Columba_palumbus)_in_flight_Rowant.jpg",
+  "w": 1920,
+  "h": 1280,
+  "focus": [
+   0.5,
+   0.5
+  ]
+ },
+ "grive": {
+  "title": "Song thrush (Turdus philomelos) Cenas.jpg",
+  "author": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Song_thrush_(Turdus_philomelos)_Cenas.jpg",
+  "w": 1920,
+  "h": 1280,
+  "focus": [
+   0.35,
+   0.6
+  ]
+ },
+ "seignosse": {
+  "title": "Beach of Seignosse.jpg",
+  "author": "Eldidi82",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Beach_of_Seignosse.jpg",
+  "w": 1920,
+  "h": 1276,
+  "focus": [
+   0.5,
+   0.5
+  ]
+ },
+ "palombiere": {
+  "title": "Palombière 1.JPG",
+  "author": "Jibi44",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Palombi%C3%A8re_1.JPG",
+  "w": 1920,
+  "h": 1440,
+  "focus": [
+   0.5,
+   0.5
+  ]
+ }
+}

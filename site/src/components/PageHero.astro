@@ -1,0 +1,20 @@
+---
+// Haut de page des pages de lecture : photo, fil d'Ariane, titre en capitales condensées, chapeau en serif.
+import Photo from "./Photo.astro";
+import { url } from "../lib/data.js";
+
+const { photo, alt, lede, crumbs = [] } = Astro.props;
+---
+<section class="page-hero band">
+  {photo && <Photo name={photo} alt={alt} priority />}
+  <div class="wrap page-hero-in">
+    {crumbs.length > 0 && (
+      <nav class="crumbs" aria-label="Fil d'Ariane">
+        <a href={url("")}>Accueil</a>
+        {crumbs.map(([name, href], i) => (<><span aria-hidden="true">/</span>{i === crumbs.length - 1 ? <span aria-current="page">{name}</span> : <a href={href}>{name}</a>}</>))}
+      </nav>
+    )}
+    <h1 class="display"><slot /></h1>
+    {lede && <p class="lede">{lede}</p>}
+  </div>
+</section>

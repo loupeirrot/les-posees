@@ -1,11 +1,13 @@
 ---
+import PageHero from "../components/PageHero.astro";
 import Base from "../layouts/Base.astro";
 import { latest, url, frDateTime, STATUS_WORDS } from "../lib/data.js";
 const dot = (s) => (s === "ok" || s === "vide" ? "" : s === "bloquée" || s === "erreur" || s === "format" ? "bad" : "warn");
 ---
-<Base title="État des sources de données" description="Dernière lecture réussie de chaque source : palombe.com, GIFS France, Trektellen, météo." crumbs={[["État des sources", url("etat/")]]} read>
-  <h1>État des sources</h1>
-  <p class="lead">Mis à jour le {frDateTime(latest.generated_at)}. Quand une source tombe, le site le dit et continue avec les autres.</p>
+<Base title="État des sources de données" description="Dernière lecture réussie de chaque source : palombe.com, GIFS France, Trektellen, météo." crumbs={[["État des sources", url("etat/")]]}>
+  <PageHero  crumbs={[["État des sources", url("etat/")]]}>État des sources</PageHero>
+  <div class="band"><div class="prose">
+  <p class="lede">Mis à jour le {frDateTime(latest.generated_at)}. Quand une source tombe, le site le dit et continue avec les autres.</p>
   <div class="table-wrap">
     <table>
       <thead><tr><th scope="col">Source</th><th scope="col" style="text-align:left">État</th><th scope="col">Dernière réussite</th></tr></thead>
@@ -20,4 +22,5 @@ const dot = (s) => (s === "ok" || s === "vide" ? "" : s === "bloquée" || s === 
       </tbody>
     </table>
   </div>
+  </div></div>
 </Base>

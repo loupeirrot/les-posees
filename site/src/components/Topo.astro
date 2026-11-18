@@ -1,0 +1,24 @@
+---
+// Courbes de niveau en filigrane, générées au build (déterministes).
+const { seed = 3, lines = 11, class: cls = "" } = Astro.props;
+const W = 1200, H = 800;
+const rand = (() => { let s = seed * 9301 + 49297; return () => ((s = (s * 9301 + 49297) % 233280) / 233280); })();
+const centers = [[W * 0.78, H * 0.32], [W * 0.18, H * 0.82]];
+const paths = [];
+for (const [cx, cy] of centers) {
+  const phase = [rand() * 6.28, rand() * 6.28, rand() * 6.28];
+  for (let k = 1; k <= lines; k++) {
+    const r0 = 26 * k + rand() * 6;
+    let d = "";
+    for (let i = 0; i <= 72; i++) {
+      const a = (i / 72) * Math.PI * 2;
+      const r = r0 * (1 + 0.16 * Math.sin(3 * a + phase[0]) + 0.08 * Math.sin(5 * a + phase[1] + k * 0.15) + 0.05 * Math.sin(2 * a + phase[2]));
+      d += `${i ? "L" : "M"}${(cx + r * Math.cos(a)).toFixed(1)},${(cy + r * 0.72 * Math.sin(a)).toFixed(1)}`;
+    }
+    paths.push(d + "Z");
+  }
+}
+---
+<svg class={`topo ${cls}`} viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+  {paths.map((d, i) => <path d={d} fill="none" stroke="currentColor" stroke-width={i % 5 === 4 ? 1.6 : 0.8} />)}
+</svg>

@@ -1,9 +1,11 @@
 ---
+import PageHero from "../components/PageHero.astro";
 import Base from "../layouts/Base.astro";
 import { url } from "../lib/data.js";
 ---
-<Base title="Mentions légales et sources des données" description="Éditeur, hébergement, sources des données (palombe.com, GIFS France, Trektellen, Météo-France) et confidentialité." crumbs={[["Mentions légales", url("mentions-legales/")]]} read>
-  <h1>Mentions légales</h1>
+<Base title="Mentions légales et sources des données" description="Éditeur, hébergement, sources des données (palombe.com, GIFS France, Trektellen, Météo-France) et confidentialité." crumbs={[["Mentions légales", url("mentions-legales/")]]}>
+  <PageHero  crumbs={[["Mentions légales", url("mentions-legales/")]]}>Mentions légales</PageHero>
+  <div class="band"><div class="prose">
   <h2>Éditeur et hébergement</h2>
   <p>Éditeur : à compléter (nom de l'éditeur et moyen de contact). Hébergement : GitHub Pages, GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
 
@@ -22,5 +24,8 @@ import { url } from "../lib/data.js";
 
   <h2>Avertissement</h2>
   <p>Prévision indicative, non garantie. Respectez la réglementation en vigueur, les dates fixées par arrêté et les règles de sécurité.</p>
-  <p class="src">Polices Archivo et Atkinson Hyperlegible sous licence SIL Open Font License ; icônes Lucide (licence ISC).</p>
+  <h2>Photographies</h2>
+  <p>Les photos viennent de Wikimedia Commons, sous licences Creative Commons BY-SA 3.0 ou 4.0, redimensionnées pour le site : Marie Anne Robert (forêt des Landes), Rudolphous (vol de palombes), Charles J. Sharp (palombe en vol, grive musicienne), Eldidi82 (plage de Seignosse), Jibi44 (panneau de palombière). Les liens vers chaque fiche sont en pied de page.</p>
+  <p class="src">Polices Archivo, Newsreader et Atkinson Hyperlegible sous licence SIL Open Font License ; icônes Phosphor (licence MIT).</p>
+  </div></div>
 </Base>

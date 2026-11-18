@@ -1,0 +1,12 @@
+---
+// Bord déchiré entre deux bandes : la couleur du bord est celle de la bande qui suit.
+const { color = "var(--night)", flip = false, seed = 7 } = Astro.props;
+let s = seed;
+const rnd = () => ((s = (s * 16807) % 2147483647) / 2147483647);
+let d = "M0,40";
+for (let x = 0; x <= 1200; x += 14 + Math.floor(rnd() * 18)) d += ` L${x},${(6 + rnd() * 22).toFixed(1)}`;
+d += " L1200,12 L1200,40 Z";
+---
+<svg class="torn" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true" focusable="false" style={flip ? "transform:scaleY(-1)" : undefined}>
+  <path d={d} fill={color} />
+</svg>

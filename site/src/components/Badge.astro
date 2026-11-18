@@ -1,0 +1,15 @@
+---
+// Badge rond : nom du site sur le pourtour, palombe au centre.
+const { size = 46, ring = "LES POSÉES · DUNE LANDAISE ·" } = Astro.props;
+const id = "ring-" + size;
+---
+<svg class="badge" width={size} height={size} viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+  <circle cx="50" cy="50" r="48" fill="currentColor" />
+  <circle cx="50" cy="50" r="31" fill="none" stroke="var(--badge-ink)" stroke-width="1.5" />
+  <defs><path id={id} d="M50,50 m-39,0 a39,39 0 1,1 78,0 a39,39 0 1,1 -78,0" /></defs>
+  <text fill="var(--badge-ink)" font-family="var(--f-display)" font-size="10.5" font-weight="800" letter-spacing="1.6" style="font-stretch:62%">
+    <textPath href={`#${id}`} startOffset="0" textLength="238" lengthAdjust="spacingAndGlyphs">{ring}</textPath>
+  </text>
+  <!-- palombe en vol, silhouette -->
+  <path fill="var(--badge-ink)" d="M50 41c-3 0-5 2-6 4l-12-6c-2-1-4 0-3 2l9 9c-3 2-4 5-3 8 3-1 6-2 9-1l2 7c1 2 3 2 4 0l2-7c3-1 6 0 9 1 1-3 0-6-3-8l9-9c1-2-1-3-3-2l-12 6c-1-2-3-4-6-4z" />
+</svg>

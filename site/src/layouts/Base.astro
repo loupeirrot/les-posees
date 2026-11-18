@@ -1,20 +1,24 @@
 ---
 import "@fontsource-variable/archivo/wdth.css";
+import "@fontsource-variable/newsreader/wght.css";
+import "@fontsource-variable/newsreader/wght-italic.css";
 import "@fontsource/atkinson-hyperlegible/400.css";
 import "@fontsource/atkinson-hyperlegible/700.css";
 import "../styles/global.css";
 import Icon from "../components/Icon.astro";
+import Badge from "../components/Badge.astro";
+import photos from "../lib/photos.json";
 import { url, latest, frDateTime } from "../lib/data.js";
 
-const { title, description, crumbs = [], read = false, image = "og/seignosse-palombe.png", noindex = false, jsonld = [] } = Astro.props;
+const { title, description, crumbs = [], image = "og/seignosse-palombe.png", noindex = false, jsonld = [], solidHeader = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL(url(image), Astro.site).href;
 const path = Astro.url.pathname;
 const nav = [
-  ["Passage du jour", url("")],
-  ["Secteurs", url("secteurs/")],
-  ["Espèces", url("especes/palombe/")],
-  ["Méthode", url("methode/")],
+  ["Passage du jour", url(""), ""],
+  ["Secteurs", url("secteurs/"), "opt"],
+  ["Espèces", url("especes/palombe/"), "opt"],
+  ["Méthode", url("methode/"), "opt"],
 ];
 const ld = [
   { "@context": "https://schema.org", "@type": "WebSite", name: "Les posées", url: new URL(url(""), Astro.site).href, inLanguage: "fr-FR" },
@@ -24,6 +28,11 @@ const ld = [
   },
   ...jsonld,
 ].filter(Boolean);
+const credits = Object.values(Object.values(photos).reduce((acc, p) => {
+  const k = p.author + p.license;
+  (acc[k] ??= { author: p.author, license: p.license, pages: [] }).pages.push(p.page);
+  return acc;
+}, {}));
 ---
 <!doctype html>
 <html lang="fr">
@@ -34,8 +43,7 @@ const ld = [
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   {noindex && <meta name="robots" content="noindex, nofollow" />}
-  <meta name="theme-color" content="#21402e" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#0c1210" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#121611" />
   <link rel="manifest" href={url("manifest.webmanifest")} />
   <link rel="icon" href={url("icons/icon-192.png")} type="image/png" />
   <link rel="apple-touch-icon" href={url("icons/icon-192.png")} />
@@ -56,41 +64,41 @@ const ld = [
 </head>
 <body data-base={url("")} data-generated={latest.generated_at}>
   <a class="skip" href="#contenu">Aller au contenu</a>
-  <header class="top">
-    <a class="brand" href={url("")}>
-      <span class="brand-mark"><Icon name="bird" size={20} /></span>
-      <b>Les posées</b>
-    </a>
-    <button class="dawn" id="theme" type="button" aria-pressed="false">
-      <Icon name="moon-star" size={18} /><span id="theme-label">Mode aube</span>
-    </button>
+  <header class:list={["site-head band", solidHeader && "solid"]}>
+    <div class="wrap head-in">
+      <a class="brand" href={url("")} aria-label="Les posées, accueil">
+        <Badge size={44} />
+        <b>Les posées</b>
+      </a>
+      <nav class="head-nav" aria-label="Navigation principale">
+        {nav.map(([label, href, cls]) => <a class={cls} href={href} aria-current={path === href ? "page" : undefined}>{label}</a>)}
+        <button class="dawn" id="theme" type="button" aria-pressed="false" aria-label="Mode aube">
+          <Icon name="moon-stars" size={20} />
+        </button>
+      </nav>
+    </div>
   </header>
-  <nav class="nav" aria-label="Navigation principale">
-    {nav.map(([label, href]) => <a href={href} aria-current={path === href ? "page" : undefined}>{label}</a>)}
-  </nav>
-  <div id="net-banner" class="banner" hidden style="max-width:34rem;margin:0 auto 10px"></div>
-  {crumbs.length > 0 && (
-    <nav class="crumbs" aria-label="Fil d'Ariane" style={`max-width:${read ? "42rem" : "34rem"};margin:0 auto 8px`}>
-      <a href={url("")}>Accueil</a>
-      {crumbs.map(([name, href], i) => (<><span aria-hidden="true">›</span>{i === crumbs.length - 1 ? <span>{name}</span> : <a href={href}>{name}</a>}</>))}
-    </nav>
-  )}
-  <main id="contenu" class={read ? "read" : undefined}>
+  <main id="contenu">
     <slot />
   </main>
-  <footer class="foot">
-    <p>Prévision indicative, non garantie. Respectez la réglementation et la sécurité : la dune est fréquentée par les promeneurs et les surfeurs.</p>
-    <p>Données mises à jour le <span class="num">{frDateTime(latest.generated_at)}</span>. Sources : palombe.com et GIFS France, Trektellen, Météo-France (modèle AROME).</p>
-    <nav aria-label="Pages du site">
-      <a href={url("secteurs/")}>Secteurs</a>
-      <a href={url("especes/palombe/")}>Palombe</a>
-      <a href={url("especes/grives/")}>Grives</a>
-      <a href={url("guides/lire-le-vent/")}>Lire le vent</a>
-      <a href={url("methode/")}>Comment on calcule</a>
-      <a href={url("etat/")}>État des sources</a>
-      <a href={url("archives/")}>Archives</a>
-      <a href={url("mentions-legales/")}>Mentions légales</a>
-    </nav>
+  <div id="net-banner" class="banner net" role="status" hidden></div>
+  <footer class="site-foot band">
+    <div class="wrap foot-in">
+      <span class="foot-badge"><Badge size={112} /></span>
+      <p class="warn">Prévision indicative, non garantie. La dune est fréquentée par les promeneurs et les surfeurs : jamais de tir vers les chemins ni la plage.</p>
+      <nav aria-label="Pages du site">
+        <a href={url("secteurs/")}>Secteurs</a>
+        <a href={url("especes/palombe/")}>Palombe</a>
+        <a href={url("especes/grives/")}>Grives</a>
+        <a href={url("guides/lire-le-vent/")}>Lire le vent</a>
+        <a href={url("methode/")}>Comment on calcule</a>
+        <a href={url("etat/")}>État des sources</a>
+        <a href={url("archives/")}>Archives</a>
+        <a href={url("mentions-legales/")}>Mentions légales</a>
+      </nav>
+      <p>Données mises à jour le <span class="num">{frDateTime(latest.generated_at)}</span>. Sources : palombe.com et GIFS France, Trektellen, Météo-France (AROME).</p>
+      <p class="src">Photos Wikimedia Commons : {credits.map((c, i) => <>{i > 0 && " · "}<a href={c.pages[0]} rel="noopener">{c.author}</a> ({c.license})</>)}.</p>
+    </div>
   </footer>
   <script>
     import "../scripts/app.js";

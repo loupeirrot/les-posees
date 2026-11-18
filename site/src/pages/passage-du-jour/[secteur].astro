@@ -19,8 +19,7 @@ const description = f
 ---
 <Base title={title} description={description} image={`og/${secteur}-palombe.png`}
   crumbs={[["Passage du jour", url("")], [name, url(`passage-du-jour/${secteur}/`)]]}>
-  <Today heading={`Est-ce que ça va passer à ${name} ?`} sector={secteur} />
-  <p><a href={url(`secteurs/${secteur}/`)}>Le secteur de {name} : zonages, sécurité, lecture du vent</a></p>
+  <Today sector={secteur} where={name} />
   <Signals />
   <MapBlock />
 </Base>

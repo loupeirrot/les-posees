@@ -9,11 +9,15 @@ const payload = {
   wind: Object.fromEntries(Object.entries(latest.forecast).map(([k, v]) => [k, Object.fromEntries(Object.entries(v.palombe).map(([d, f]) => [d, f ? f.wind.dir : null]))])),
 };
 ---
-<section class="card" aria-labelledby="carte">
-  <h2 id="carte"><Icon name="map" />Carte des signalements</h2>
-  <p>Secteurs, vent à 8 h et signalements Flash des dernières 24 h (vert : aller, orange : recul).</p>
-  <div class="map-box" id="map-box" hidden><div id="map"></div></div>
-  <button class="btn ghost" id="map-load" type="button"><Icon name="map" size={18} />Afficher la carte</button>
-  <p class="src">Fond de carte © <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a>, données © contributeurs <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>. Chargée seulement à la demande, pour économiser le réseau.</p>
-  <script type="application/json" id="map-data" set:html={JSON.stringify(payload)} />
+<section class="band" aria-labelledby="carte">
+  <div class="wrap sec" style="padding-top:8px">
+    <div class="sec-head">
+      <h2 id="carte" class="h-serif">La carte des signalements</h2>
+      <p>Les secteurs, le vent à 8 h et les signalements Flash des dernières 24 heures : vert pour l'aller, orange pour le recul.</p>
+    </div>
+    <div class="map-box" id="map-box" hidden><div id="map"></div></div>
+    <button class="btn" id="map-load" type="button"><Icon name="map-trifold" size={22} />Afficher la carte</button>
+    <p class="src">Chargée à la demande pour économiser le réseau. Fond © <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a>, données © contributeurs <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>.</p>
+    <script type="application/json" id="map-data" set:html={JSON.stringify(payload)} />
+  </div>
 </section>

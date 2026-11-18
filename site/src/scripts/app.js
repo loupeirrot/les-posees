@@ -11,8 +11,7 @@ const themeBtn = document.getElementById("theme");
 const isDark = () => (root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches);
 const syncTheme = () => {
   themeBtn?.setAttribute("aria-pressed", String(isDark()));
-  const l = document.getElementById("theme-label");
-  if (l) l.textContent = isDark() ? "Mode jour" : "Mode aube";
+  themeBtn?.setAttribute("aria-label", isDark() ? "Mode jour" : "Mode aube");
 };
 themeBtn?.addEventListener("click", () => {
   root.dataset.theme = isDark() ? "light" : "dark";
@@ -32,7 +31,7 @@ if (fcs) {
   // sur la page d'accueil, on reprend le secteur favori
   if (location.pathname === base && store.get("sector")) state.sector = store.get("sector");
   const render = () => {
-    fcs.querySelectorAll(".fc").forEach((el) => {
+    document.querySelectorAll("[data-fc]").forEach((el) => {
       el.hidden = !(el.dataset.sector === state.sector && el.dataset.cat === state.cat && el.dataset.day === state.day);
     });
     document.querySelectorAll("#pick-cat [data-cat]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.cat === state.cat)));

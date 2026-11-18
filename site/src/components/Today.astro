@@ -1,33 +1,45 @@
 ---
-// Écran principal : choix du gibier, du secteur et du jour, puis la prévision correspondante.
+// Héros de l'accueil : photo d'aube, question, choix (gibier, secteur, jour), verdict ; puis le détail sur papier.
 import Forecast from "./Forecast.astro";
 import Icon from "./Icon.astro";
-import { latest, url, SECTOR_KEYS, CATEGORIES, days, defaultDayIndex, frDateTime } from "../lib/data.js";
+import Photo from "./Photo.astro";
+import { latest, url, SECTOR_KEYS, CATEGORIES, days, defaultDayIndex, frDateTime, frDay } from "../lib/data.js";
 
-const { sector = "seignosse", heading } = Astro.props;
+const { sector = "seignosse", where } = Astro.props;
 const [d0, d1] = days();
 const di = defaultDayIndex();
 const dayList = [d0, d1];
+const blocks = (part) => SECTOR_KEYS.flatMap((s) => Object.keys(CATEGORIES).flatMap((c) => dayList.map((d, i) => ({ s, c, d, visible: s === sector && c === "palombe" && i === di, part }))));
 ---
-<h1>{heading}</h1>
-{latest.mode === "degrade" && (
-  <p class="banner" role="status"><Icon name="triangle-alert" />Mode dégradé : la météo n'est pas disponible, seuls les signalements et comptages sont à jour.</p>
-)}
-<div class="seg" role="group" aria-label="Gibier" id="pick-cat">
-  {Object.entries(CATEGORIES).map(([k, label], i) => <button type="button" data-cat={k} aria-pressed={i === 0 ? "true" : "false"}>{label}</button>)}
-</div>
-<div class="seg sectors" role="group" aria-label="Secteur" id="pick-sector">
-  {SECTOR_KEYS.map((k) => (
-    <a href={url(`passage-du-jour/${k}/`)} data-sector={k} aria-current={k === sector ? "page" : undefined}>{latest.sectors[k].name}</a>
-  ))}
-</div>
-<div class="seg" role="group" aria-label="Jour" id="pick-day">
-  <button type="button" data-day={d0} aria-pressed={di === 0 ? "true" : "false"}>Ce matin</button>
-  <button type="button" data-day={d1} aria-pressed={di === 1 ? "true" : "false"}>Demain matin</button>
-</div>
-<div id="forecasts" data-default-sector={sector}>
-  {SECTOR_KEYS.map((s) => Object.keys(CATEGORIES).map((c) => dayList.map((d, i) => (
-    <Forecast sector={s} cat={c} day={d} visible={s === sector && c === "palombe" && i === di} />
-  ))))}
-</div>
-<p class="src"><span class="status-dot" class:list={[latest.mode === "degrade" && "warn"]}></span>Prévision calculée le <span class="num">{frDateTime(latest.generated_at)}</span>. <a href={url("etat/")}>État des sources</a></p>
+<section class="hero band" aria-labelledby="question">
+  <Photo name="aube-pins" alt="Pins landais dans la brume à l'aube" priority sizes="100vw" />
+  <div class="wrap hero-in">
+    <h1 id="question" class="hero-title display">Ça va<br /><span>passer</span>{where ? <><br />à {where}</> : ""}&nbsp;?</h1>
+    <p class="hero-date">{frDay(latest.today)} · de Labenne à Seignosse</p>
+    {latest.mode === "degrade" && (
+      <p class="mode-note" role="status"><Icon name="warning" size={20} />Mode dégradé : la météo n'est pas disponible, seuls les signalements et comptages sont à jour.</p>
+    )}
+    <div class="hero-tools">
+      <div class="seg" role="group" aria-label="Gibier" id="pick-cat">
+        {Object.entries(CATEGORIES).map(([k, label], i) => <button type="button" data-cat={k} aria-pressed={i === 0 ? "true" : "false"}>{label}</button>)}
+      </div>
+      <div class="seg sectors" role="group" aria-label="Secteur" id="pick-sector">
+        {SECTOR_KEYS.map((k) => <a href={url(`passage-du-jour/${k}/`)} data-sector={k} aria-current={k === sector ? "page" : undefined}>{latest.sectors[k].name}</a>)}
+      </div>
+      <div class="seg" role="group" aria-label="Jour" id="pick-day">
+        <button type="button" data-day={d0} aria-pressed={di === 0 ? "true" : "false"}>Ce matin</button>
+        <button type="button" data-day={d1} aria-pressed={di === 1 ? "true" : "false"}>Demain matin</button>
+      </div>
+    </div>
+    <div class="hero-verdict" id="forecasts" data-default-sector={sector}>
+      {blocks("verdict").map((b) => <Forecast sector={b.s} cat={b.c} day={b.d} visible={b.visible} part="verdict" />)}
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-label="Le détail de la matinée">
+  <div class="wrap sec" style="padding-top:28px">
+    {blocks("details").map((b) => <Forecast sector={b.s} cat={b.c} day={b.d} visible={b.visible} part="details" />)}
+    <p class="src"><span class:list={["status-dot", latest.mode === "degrade" && "warn"]}></span>Prévision calculée le <span class="num">{frDateTime(latest.generated_at)}</span> · <a href={url("etat/")}>état des sources</a></p>
+  </div>
+</section>

@@ -12,8 +12,8 @@ from common import ROOT, SECTORS
 FONTS = ROOT / "fonts"
 OUT = ROOT / "site" / "public" / "og"
 ICONS = ROOT / "site" / "public" / "icons"
-INK, SAND, PINE, MUTED = "#121a16", "#ecede7", "#21402e", "#4c5751"
-LEVEL = {"good": ("#146b3e", "#d7eedf"), "maybe": ("#865000", "#f5e5c7"), "low": ("#47515a", "#e1e5e7"), None: ("#47515a", "#e1e5e7")}
+INK, SAND, PINE, MUTED = "#ece5d3", "#121611", "#c8501a", "#a9ab98"  # charte « Lette et brume » : fond nuit, accent orange
+LEVEL = {"good": ("#24552d", "#f4efe2"), "maybe": ("#e0a72e", "#1c1608"), "low": ("#3b403d", "#f1ece0"), None: ("#3b403d", "#f1ece0")}
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
 JOURS = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
 
@@ -21,10 +21,7 @@ JOURS = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"
 def font(kind, size):
     if kind == "display":
         f = ImageFont.truetype(str(FONTS / "Archivo.ttf"), size)
-        try:
-            f.set_variation_by_axes([75, 800])  # largeur étroite, graisse forte
-        except Exception:  # noqa: BLE001
-            pass
+        f.set_variation_by_axes([800, 62])  # axes d'Archivo : graisse, puis largeur (62 = la plus étroite)
         return f
     return ImageFont.truetype(str(FONTS / ("Atkinson-Bold.ttf" if kind == "bold" else "Atkinson-Regular.ttf")), size)
 
@@ -36,23 +33,23 @@ def fr_day(iso):
 
 def draw_card(w, h, sector, cat, f, day, scale=1.0):
     lvl = f["level"] if f else None
-    border, bg = LEVEL[lvl]
+    bg, fg = LEVEL[lvl]
     im = Image.new("RGB", (w, h), SAND)
     d = ImageDraw.Draw(im)
     m = int(64 * scale)
-    d.text((m, m), "Les posées", font=font("display", int(44 * scale)), fill=PINE)
+    d.text((m, m), "LES POSÉES", font=font("display", int(48 * scale)), fill=PINE)
     d.text((m, m + int(62 * scale)), f"{'Palombe' if cat == 'palombe' else 'Grives'} · {sector} · {fr_day(day)}", font=font("body", int(34 * scale)), fill=INK)
     top = m + int(140 * scale)
-    d.rounded_rectangle((m, top, w - m, h - m - int(70 * scale)), radius=int(28 * scale), fill=bg, outline=border, width=int(6 * scale))
-    word = f["word"] if f else "Prévision indisponible"
-    size = int(120 * scale)
+    d.rounded_rectangle((m, top, w - m, h - m - int(70 * scale)), radius=int(14 * scale), fill=bg)
+    word = (f["word"] if f else "Prévision indisponible").upper()
+    size = int(104 * scale)
     while font("display", size).getlength(word) > w - 2 * m - int(80 * scale):
         size -= 4
-    d.text((m + int(40 * scale), top + int(40 * scale)), word, font=font("display", size), fill=INK)
+    d.text((m + int(40 * scale), top + int(34 * scale)), word, font=font("display", size), fill=fg)
     if f:
-        y = top + int(40 * scale) + size + int(30 * scale)
-        d.text((m + int(40 * scale), y), f"{f['window']['label']} : {f['window']['text']}", font=font("bold", int(38 * scale)), fill=INK)
-        d.text((m + int(40 * scale), y + int(56 * scale)), f"Vent {f['wind']['dir_name']} {f['wind']['speed']} km/h, {f['wind']['force']}", font=font("body", int(36 * scale)), fill=INK)
+        y = top + int(34 * scale) + size + int(18 * scale)
+        d.text((m + int(40 * scale), y), f"{f['window']['label']} : {f['window']['text']}", font=font("bold", int(38 * scale)), fill=fg)
+        d.text((m + int(40 * scale), y + int(56 * scale)), f"Vent {f['wind']['dir_name']} {f['wind']['speed']} km/h, {f['wind']['force']}", font=font("body", int(36 * scale)), fill=fg)
     d.text((m, h - m - int(40 * scale)), "Indice provisoire · prévision indicative", font=font("body", int(28 * scale)), fill=MUTED)
     return im
 
@@ -60,13 +57,13 @@ def draw_card(w, h, sector, cat, f, day, scale=1.0):
 def icons():
     ICONS.mkdir(parents=True, exist_ok=True)
     for size, pad, name in ((192, 0.0, "icon-192.png"), (512, 0.0, "icon-512.png"), (512, 0.12, "icon-512-maskable.png")):
-        im = Image.new("RGB", (size, size), PINE)
+        im = Image.new("RGB", (size, size), "#c8501a")
         d = ImageDraw.Draw(im)
         f = font("display", int(size * (0.62 - pad)))
         text = "P"
         tw = f.getlength(text)
         bbox = f.getbbox(text)
-        d.text(((size - tw) / 2, (size - (bbox[3] + bbox[1])) / 2), text, font=f, fill="#f4f2ea")
+        d.text(((size - tw) / 2, (size - (bbox[3] + bbox[1])) / 2), text, font=f, fill="#fff4ea")
         im.save(ICONS / name, optimize=True)
 
 

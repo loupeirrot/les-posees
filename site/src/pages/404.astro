@@ -1,9 +1,12 @@
 ---
+import PageHero from "../components/PageHero.astro";
 import Base from "../layouts/Base.astro";
 import { url } from "../lib/data.js";
 ---
-<Base title="Page introuvable" description="Cette page n'existe pas ou a changé d'adresse." noindex read>
-  <h1>Page introuvable</h1>
-  <p class="lead">Cette adresse ne mène nulle part. La prévision du jour est sur l'accueil.</p>
+<Base title="Page introuvable" description="Cette page n'existe pas ou a changé d'adresse." noindex>
+  <PageHero photo="palombiere" alt="Panneau « Palombière, sifflez » cloué sur un pin" crumbs={[]}>Page introuvable</PageHero>
+  <div class="band"><div class="prose">
+  <p class="lede">Cette adresse ne mène nulle part. La prévision du jour est sur l'accueil.</p>
   <p><a class="btn" href={url("")}>Voir le passage du jour</a></p>
+  </div></div>
 </Base>

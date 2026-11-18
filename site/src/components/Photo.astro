@@ -1,0 +1,14 @@
+---
+// Photo responsive (WebP pré-calculés dans public/photos) ; crédits dans le pied de page.
+import photos from "../lib/photos.json";
+import { url } from "../lib/data.js";
+
+const { name, alt, sizes = "100vw", class: cls = "", priority = false } = Astro.props;
+const p = photos[name];
+const available = { "aube-pins": [640, 1280, 1600], palombiere: [640] }[name] ?? [640, 1280];
+const srcset = available.map((w) => `${url(`photos/${name}-${w}.webp`)} ${w}w`).join(", ");
+const [fx, fy] = p.focus;
+---
+<img class={`photo ${cls}`} src={url(`photos/${name}-${available.at(-1) >= 1280 ? 1280 : available[0]}.webp`)} srcset={srcset} sizes={sizes}
+  width={p.w} height={p.h} alt={alt} loading={priority ? "eager" : "lazy"} decoding="async" fetchpriority={priority ? "high" : "auto"}
+  style={`object-position:${fx * 100}% ${fy * 100}%`} />
