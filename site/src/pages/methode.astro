@@ -1,0 +1,36 @@
+---
+import Base from "../layouts/Base.astro";
+import { url } from "../lib/data.js";
+---
+<Base title="Comment on calcule l'indice de passage" description="La règle utilisée pour la palombe et les grives, les données, et ce que donne le test sur quatre saisons de radar. Tout est publié, y compris ce qui ne marche pas encore." crumbs={[["Méthode", url("methode/")]]} read>
+  <h1>Comment on calcule</h1>
+  <p class="lead">Le verdict du matin vient d'une règle simple, écrite à partir du vent, de la pluie et de la brume. Elle est provisoire : on la publie avec ses résultats, y compris quand ils sont mauvais.</p>
+
+  <h2>Palombe : quatre critères</h2>
+  <ol>
+    <li>Vent de secteur nord à sud-est à 8 h.</li>
+    <li>Pas de pluie entre 7 h et 11 h (moins de 0,3 mm).</li>
+    <li>Ciel lisible : au plus une heure de brume (visibilité sous 1 km) et des nuages bas sous 80 %.</li>
+    <li>Pas de coup de vent : rafales sous 50 km/h et vent sous 30 km/h. Ce critère est bloquant.</li>
+  </ol>
+  <p>Trois critères sur trois : « Ça devrait passer ». Deux sur trois : « Possible ». Moins, ou coup de vent : « Peu probable ». La fenêtre horaire part d'un quart d'heure avant le lever du soleil, ou de la levée de la brume, et court environ trois heures.</p>
+
+  <h2>Grives : trois critères</h2>
+  <ol>
+    <li>Vent moyen de la nuit (19 h – 7 h) de secteur nord-ouest à est.</li>
+    <li>Nuit sèche (moins de 0,5 mm).</li>
+    <li>Aube calme et sèche : vent moyen sous 25 km/h et pas de pluie entre 7 h et 10 h.</li>
+  </ol>
+
+  <h2>Ce que donne le test</h2>
+  <p>On a confronté la règle des grives à quatre saisons du radar météo de Momuy (octobre et novembre 2021, 2022, 2023 et 2025, soit 236 nuits), en prenant pour cible les grosses nuits de migration. Résultat : ni la règle du vent ni un modèle statistique ne font mieux qu'un taux fixe (score de Brier de 0,228 et 0,236 contre 0,223). La règle fait mieux que la simple date du calendrier (0,254). Le vent du nord est bien lié aux nuits chargées, mais pas assez pour prévoir d'une saison à l'autre.</p>
+  <p>Ce qui manque, ce sont des observations de terrain. Les comptages des cols du GIFS France (quinze saisons publiées sur palombe.com) permettent maintenant de tester la règle de la palombe : c'est la prochaine étape.</p>
+
+  <h2>Les données</h2>
+  <ul>
+    <li>Météo : modèles Météo-France (AROME, ARPEGE) par Open-Meteo, mise à jour toutes les heures.</li>
+    <li>Signalements Flash, observations et comptages des cols : palombe.com et GIFS France, toutes les 15 minutes pour le Flash, chaque heure pour les observations, chaque soir pour les cols.</li>
+    <li>Comptages d'Organbidexka : Trektellen.</li>
+  </ul>
+  <p>Chaque matin à 6 h 30, la prévision est figée et archivée avec son empreinte, pour qu'on puisse la comparer après coup : voir les <a href={url("archives/")}>archives</a>. L'état de chaque source est sur la page <a href={url("etat/")}>état des sources</a>.</p>
+</Base>

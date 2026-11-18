@@ -1,0 +1,38 @@
+---
+import Base from "../../layouts/Base.astro";
+import { latest, url, SECTOR_KEYS, frDay } from "../../lib/data.js";
+import { SECTEURS, inpn } from "../../lib/secteurs.js";
+
+export function getStaticPaths() {
+  return SECTOR_KEYS.map((secteur) => ({ params: { secteur } }));
+}
+const { secteur } = Astro.params;
+const s = latest.sectors[secteur];
+const z = SECTEURS[secteur];
+const f = latest.forecast[secteur].palombe[latest.today];
+---
+<Base title={`Chasse à la palombe à ${s.name} : vent, dune et zonages`} description={`Ce qu'il faut savoir pour suivre le passage à ${s.name} : lecture du vent sur la dune, forêts publiques, sites Natura 2000, sécurité.`}
+  crumbs={[["Secteurs", url("secteurs/")], [s.name, url(`secteurs/${secteur}/`)]]} read>
+  <h1>{s.name}</h1>
+  <p class="lead">
+    {f ? <>Ce matin ({frDay(latest.today)}) : <b>{f.word}</b> pour la palombe, vent {f.wind.dir_name} {f.wind.speed} km/h. </> : null}
+    <a href={url(`passage-du-jour/${secteur}/`)}>Voir la prévision complète de {s.name}</a>.
+  </p>
+
+  <h2>Le vent sur la dune</h2>
+  <p>La côte file presque droit du sud au nord, avec la dune entre l'océan et la forêt. Par vent à composante est, les vols ont tendance à dériver vers l'océan et à longer la dune ; par vent d'ouest, ils passent plutôt à l'intérieur des terres. Cette règle vient des chasseurs du secteur et reste à confirmer par les observations : voir <a href={url("guides/lire-le-vent/")}>lire le vent</a>.</p>
+
+  <h2>Qui gère le terrain</h2>
+  <p>Forêts publiques relevées autour de la commune :</p>
+  <ul>{z.forets.map((x) => <li>{x}</li>)}</ul>
+  {z.natura.length > 0 ? (
+    <>
+      <p>Sites Natura 2000 relevés autour de la commune :</p>
+      <ul>{z.natura.map(([id, name]) => <li><a href={inpn(id)} rel="noopener">{name}</a> ({id})</li>)}</ul>
+    </>
+  ) : <p>Aucun site Natura 2000 dunaire relevé dans l'emprise interrogée.</p>}
+  <p>Le droit de chasse dépend du propriétaire : ONF pour la forêt domaniale, commune ou ACCA ailleurs, règles propres sur les terrains du Conservatoire du littoral. Renseignez-vous auprès de l'ACCA de {s.name} ou de l'ONF avant de vous installer. Relevé IGN Géoplateforme du 18 novembre 2026, sur un rectangle autour de la commune : vérifiez le périmètre exact sur les fiches officielles.</p>
+
+  <h2>Sécurité</h2>
+  <p>La dune et les accès plage sont fréquentés toute l'année, et davantage pendant les vacances de la Toussaint et les week-ends ensoleillés : promeneurs, surfeurs, cyclistes. Jamais de tir vers les chemins, les parkings ni la plage.</p>
+</Base>

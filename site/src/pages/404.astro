@@ -1,0 +1,9 @@
+---
+import Base from "../layouts/Base.astro";
+import { url } from "../lib/data.js";
+---
+<Base title="Page introuvable" description="Cette page n'existe pas ou a changé d'adresse." noindex read>
+  <h1>Page introuvable</h1>
+  <p class="lead">Cette adresse ne mène nulle part. La prévision du jour est sur l'accueil.</p>
+  <p><a class="btn" href={url("")}>Voir le passage du jour</a></p>
+</Base>

@@ -1,0 +1,34 @@
+---
+import Base from "../../layouts/Base.astro";
+import { url } from "../../lib/data.js";
+const rows = [
+  ["Nord", "Porteur : ça peut passer vite, et souvent haut."],
+  ["Nord-est", "Porteur : ça peut passer haut. La composante est pousse les vols vers l'océan, ils longent la dune."],
+  ["Est", "Les vols dérivent vers la côte et longent la dune."],
+  ["Sud-est", "Vent de travers : les vols se rabattent sur la côte et passent plus bas."],
+  ["Sud", "Vent de face : les vols passent bas mais s'arrêtent ou se posent vite."],
+  ["Sud-ouest", "De face : vols bas et hésitants, souvent posés."],
+  ["Ouest", "Les vols sont repoussés vers l'intérieur, moins sur la dune."],
+  ["Nord-ouest", "Porteur mais venu de la mer : les vols restent plutôt à l'intérieur."],
+];
+---
+<Base title="Lire le vent pour la palombe sur la dune landaise" description="Comment le vent du matin change la route et la hauteur des vols de palombes entre Labenne et Seignosse : la grille de lecture utilisée par le site." crumbs={[["Lire le vent", url("guides/lire-le-vent/")]]} read>
+  <h1>Lire le vent</h1>
+  <p class="lead">Le site traduit le vent de 8 h en une phrase. Voici la grille utilisée. Elle reprend ce que disent les chasseurs de la côte et sera corrigée avec leurs observations.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th scope="col">Vent venant du</th><th scope="col" style="text-align:left">Ce que ça donne</th></tr></thead>
+      <tbody>{rows.map(([d, t]) => <tr><th scope="row">{d}</th><td style="text-align:left">{t}</td></tr>)}</tbody>
+    </table>
+  </div>
+  <h2>La force compte aussi</h2>
+  <ul>
+    <li>Moins de 6 km/h : vent quasi nul, les vols gardent leur hauteur habituelle.</li>
+    <li>De 6 à 15 km/h : vent léger.</li>
+    <li>De 16 à 29 km/h : vent établi.</li>
+    <li>30 km/h et plus, ou rafales de 50 km/h et plus : passage gêné, le verdict passe à « Peu probable ».</li>
+  </ul>
+  <h2>Au sol et à 800 m</h2>
+  <p>Le vent au sol dit ce qui se passe au poste ; le vent à 800 m (niveau 925 hPa) dit ce que rencontrent les vols en altitude. Quand les deux divergent, la hauteur des vols change souvent en cours de matinée.</p>
+  <p>Voir aussi : <a href={url("methode/")}>comment l'indice est calculé</a>.</p>
+</Base>

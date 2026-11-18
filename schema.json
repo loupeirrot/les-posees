@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/les-posees/latest.schema.json",
+  "title": "latest.json : données publiques du site Les posées",
+  "type": "object",
+  "required": ["generated_at", "timezone", "today", "mode", "sectors", "forecast", "flash", "comptages", "observations", "meteo", "sources"],
+  "additionalProperties": false,
+  "$defs": {
+    "isoUtc": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"},
+    "date": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "count": {"type": ["integer", "null"], "minimum": 0},
+    "forecastDay": {
+      "type": ["object", "null"],
+      "required": ["level", "word", "score", "total", "criteria", "window", "sunrise", "wind", "reading"],
+      "properties": {
+        "level": {"enum": ["good", "maybe", "low"]},
+        "word": {"enum": ["Ça devrait passer", "Possible", "Peu probable"]},
+        "score": {"type": "integer"}, "total": {"type": "integer"},
+        "criteria": {"type": "array", "items": {"type": "object", "required": ["ok", "label", "detail"]}},
+        "window": {"type": "object", "required": ["label", "start", "end", "text"]},
+        "sunrise": {"type": "string"},
+        "wind": {"type": "object", "required": ["dir", "speed", "dir_short", "force"]},
+        "reading": {"type": "string"},
+        "hours": {"type": "array", "maxItems": 7}
+      }
+    },
+    "poste": {
+      "type": "object", "required": ["poste"],
+      "properties": {
+        "poste": {"enum": ["Arnéguy", "Banca", "Sare", "Urrugne"]},
+        "aller": {"type": "object", "properties": {"oiseaux": {"$ref": "#/$defs/count"}, "vols": {"$ref": "#/$defs/count"}}},
+        "retour": {"type": "object", "properties": {"oiseaux": {"$ref": "#/$defs/count"}, "vols": {"$ref": "#/$defs/count"}}}
+      }
+    },
+    "comptageDay": {
+      "type": ["object", "null"], "required": ["date", "url", "postes"],
+      "properties": {"date": {"$ref": "#/$defs/date"}, "url": {"type": "string", "format": "uri"}, "postes": {"type": "array", "items": {"$ref": "#/$defs/poste"}}}
+    }
+  },
+  "properties": {
+    "generated_at": {"$ref": "#/$defs/isoUtc"},
+    "timezone": {"const": "Europe/Paris"},
+    "today": {"$ref": "#/$defs/date"},
+    "mode": {"enum": ["complet", "degrade"]},
+    "sectors": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "object", "required": ["name", "lat", "lon"]}},
+    "forecast": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object", "required": ["palombe", "grives"],
+        "additionalProperties": {"type": "object", "additionalProperties": {"$ref": "#/$defs/forecastDay"}}
+      }
+    },
+    "flash": {
+      "type": "object", "required": ["window_hours", "radius_km", "center", "precision", "points", "derive_dernier_signal_amont"],
+      "properties": {
+        "window_hours": {"const": 24}, "radius_km": {"const": 150},
+        "points": {
+          "type": "array",
+          "items": {
+            "type": "object", "required": ["time", "lat", "lon", "direction", "url"], "additionalProperties": false,
+            "properties": {
+              "time": {"$ref": "#/$defs/isoUtc"},
+              "lat": {"type": "number", "multipleOf": 0.1}, "lon": {"type": "number", "multipleOf": 0.1},
+              "size_class": {"type": ["string", "null"]}, "direction": {"enum": ["aller", "recul"]},
+              "derive_distance_km": {"type": "integer", "maximum": 150}, "derive_cap_depuis_secteurs": {"type": "string"},
+              "url": {"type": "string", "format": "uri"}
+            }
+          }
+        }
+      }
+    },
+    "comptages": {
+      "type": ["object", "null"],
+      "required": ["source", "role", "season", "J", "J-1", "cumul_saison_aller_4_postes", "derive_comparaison"],
+      "properties": {"role": {"const": "aval"}, "J": {"$ref": "#/$defs/comptageDay"}, "J-1": {"$ref": "#/$defs/comptageDay"}}
+    },
+    "observations": {"type": "object", "required": ["source", "url", "par_jour"]},
+    "meteo": {"type": "object"},
+    "sources": {
+      "type": "array", "minItems": 5,
+      "items": {
+        "type": "object", "required": ["id", "label", "owner", "url", "status", "checked_at", "in_season"],
+        "properties": {"status": {"enum": ["ok", "vide", "erreur", "bloquée", "format", "coupée", "jamais"]}}
+      }
+    }
+  }
+}

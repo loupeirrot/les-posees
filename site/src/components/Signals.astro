@@ -1,0 +1,72 @@
+---
+// Signaux observés : Flash en amont, comptages des cols (aval), observations des chasseurs par département.
+import Icon from "./Icon.astro";
+import { latest, frTime, frDay, frDateTime, nf, deptName, source } from "../lib/data.js";
+
+const fl = latest.flash;
+const up = fl.derive_dernier_signal_amont;
+const aller = fl.points.filter((p) => p.direction === "aller").length;
+const recul = fl.points.length - aller;
+const c = latest.comptages;
+const cmp = c?.derive_comparaison;
+const obs = latest.observations;
+const obsDays = Object.keys(obs.par_jour).sort().reverse();
+const FOCUS = ["40", "33", "64", "47", "32"];
+const srcFlash = source("palombe_flash");
+const srcCols = source("palombe_comptages");
+---
+<section class="card" aria-labelledby="amont">
+  <h2 id="amont"><Icon name="radio-tower" />Dernier signal en amont</h2>
+  {up ? (
+    <p class="lead">
+      <b>{up.direction === "recul" ? "Vol de recul" : "Vol d'aller"}{up.size_class ? ` (${up.size_class} palombes)` : ""}</b> signalé à <b class="num">{frTime(up.time)}</b>,
+      à environ <span class="num">{up.derive_distance_km}</span> km au {up.derive_cap_depuis_secteurs} des secteurs.
+    </p>
+  ) : (
+    <p>Aucun signalement Flash au nord des secteurs dans les dernières 24 h.</p>
+  )}
+  <p>Dans un rayon de 150 km sur 24 h : <b class="num">{aller}</b> signalement{aller > 1 ? "s" : ""} d'aller, <b class="num">{recul}</b> de recul.</p>
+  <p class="src">Source : <a href={srcFlash.url} rel="noopener">Flash migration de palombe.com</a>. Position à 10 km près, sans nom d'observateur. Taille des vols selon les classes de palombe.com.</p>
+</section>
+
+{c && c.J && (
+  <section class="card" aria-labelledby="cols">
+    <h2 id="cols"><Icon name="binoculars" />Aux cols, {frDay(c.J.date)}</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Poste</th><th scope="col">Aller</th><th scope="col">Vols</th><th scope="col" class="retour">Retour</th><th scope="col" class="retour">Vols</th></tr></thead>
+        <tbody>
+          {c.J.postes.map((p) => (
+            <tr><th scope="row">{p.poste}</th><td>{nf(p.aller?.oiseaux)}</td><td>{nf(p.aller?.vols)}</td><td class="retour">{nf(p.retour?.oiseaux)}</td><td class="retour">{nf(p.retour?.vols)}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    {c.J.note && <p>« {c.J.note} »</p>}
+    {cmp?.moyenne_cumul_aller_a_date && (
+      <p>Cumul de la saison à l'aller sur les 4 postes : <b class="num">{nf(c.cumul_saison_aller_4_postes)}</b> palombes, contre <span class="num">{nf(cmp.moyenne_cumul_aller_a_date)}</span> en moyenne à la même date ({cmp.saisons[0]}–{cmp.saisons.at(-1)}){cmp.ecart_cumul_pct !== null ? `, soit ${cmp.ecart_cumul_pct > 0 ? "+" : ""}${cmp.ecart_cumul_pct} %` : ""}.</p>
+    )}
+    <p class="src">Comptages du GIFS France réalisés par les techniciens des fédérations, publiés sur <a href={c.J.url} rel="noopener">palombe.com</a>. Ces cols sont en aval des Landes : ils confirment un passage, ils ne l'annoncent pas. Lu le {srcCols.last_ok_at ? frDateTime(srcCols.last_ok_at) : "–"}.</p>
+  </section>
+)}
+
+<section class="card" aria-labelledby="obs">
+  <h2 id="obs"><Icon name="eye" />Ce que voient les chasseurs</h2>
+  {obsDays.map((d) => {
+    const rows = obs.par_jour[d];
+    const focus = rows.filter((r) => FOCUS.includes(r.dept));
+    const others = rows.filter((r) => !FOCUS.includes(r.dept));
+    return (
+      <div>
+        <h3>{frDay(d)}</h3>
+        {rows.length === 0 ? <p>Aucune observation publiée pour l'instant.</p> : (
+          <ul style="margin:6px 0 0;padding-left:1.1rem">
+            {focus.map((r) => <li><b>{deptName(r.dept)}</b> : <span class="num">{r.vols}</span> vol{r.vols > 1 ? "s" : ""} ({r.observateurs} observateur{r.observateurs > 1 ? "s" : ""})</li>)}
+            {others.length > 0 && <li>Ailleurs : <span class="num">{others.reduce((a, r) => a + r.vols, 0)}</span> vols dans {others.length} départements</li>}
+          </ul>
+        )}
+      </div>
+    );
+  })}
+  <p class="src">Source : <a href={obs.url} rel="noopener">observations de palombe.com</a>, regroupées par département.</p>
+</section>

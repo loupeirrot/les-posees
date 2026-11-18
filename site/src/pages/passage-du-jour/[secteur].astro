@@ -1,0 +1,26 @@
+---
+import Base from "../../layouts/Base.astro";
+import Today from "../../components/Today.astro";
+import Signals from "../../components/Signals.astro";
+import MapBlock from "../../components/MapBlock.astro";
+import { latest, frDate, url, SECTOR_KEYS } from "../../lib/data.js";
+
+export function getStaticPaths() {
+  return SECTOR_KEYS.map((secteur) => ({ params: { secteur } }));
+}
+const { secteur } = Astro.params;
+const name = latest.sectors[secteur].name;
+const f = latest.forecast[secteur].palombe[latest.today];
+const date = frDate(latest.today);
+const title = `Passage des palombes du ${date} à ${name}`;
+const description = f
+  ? `${f.word} à ${name} ce matin : ${f.window.label.toLowerCase()} ${f.window.text}, vent ${f.wind.dir_name} ${f.wind.speed} km/h. Grives, signalements Flash et comptages des cols.`
+  : `Signalements et comptages du ${date} autour de ${name}. Prévision météo momentanément indisponible.`;
+---
+<Base title={title} description={description} image={`og/${secteur}-palombe.png`}
+  crumbs={[["Passage du jour", url("")], [name, url(`passage-du-jour/${secteur}/`)]]}>
+  <Today heading={`Est-ce que ça va passer à ${name} ?`} sector={secteur} />
+  <p><a href={url(`secteurs/${secteur}/`)}>Le secteur de {name} : zonages, sécurité, lecture du vent</a></p>
+  <Signals />
+  <MapBlock />
+</Base>

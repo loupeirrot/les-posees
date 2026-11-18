@@ -1,0 +1,12 @@
+---
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import { archives, url, frDay } from "../../lib/data.js";
+---
+<Base title="Archives des prévisions de passage" description="Chaque matin à 6 h 30, la prévision de chaque secteur est figée. Retrouvez-les jour par jour avec ce qui a été vu." crumbs={[["Archives", url("archives/")]]} read>
+  <h1>Archives</h1>
+  <p class="lead">La prévision est figée chaque matin à 6 h 30, puis mise en regard de ce qui a été signalé dans la journée.</p>
+  {archives.length === 0 ? <p>Aucune journée archivée pour l'instant : la première sera figée demain à 6 h 30.</p> : (
+    <div class="links">{archives.map((a) => <a href={url(`archives/${a.date}/`)}>{frDay(a.date)}<Icon name="chevron-right" /></a>)}</div>
+  )}
+</Base>

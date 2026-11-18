@@ -1,0 +1,33 @@
+---
+// Écran principal : choix du gibier, du secteur et du jour, puis la prévision correspondante.
+import Forecast from "./Forecast.astro";
+import Icon from "./Icon.astro";
+import { latest, url, SECTOR_KEYS, CATEGORIES, days, defaultDayIndex, frDateTime } from "../lib/data.js";
+
+const { sector = "seignosse", heading } = Astro.props;
+const [d0, d1] = days();
+const di = defaultDayIndex();
+const dayList = [d0, d1];
+---
+<h1>{heading}</h1>
+{latest.mode === "degrade" && (
+  <p class="banner" role="status"><Icon name="triangle-alert" />Mode dégradé : la météo n'est pas disponible, seuls les signalements et comptages sont à jour.</p>
+)}
+<div class="seg" role="group" aria-label="Gibier" id="pick-cat">
+  {Object.entries(CATEGORIES).map(([k, label], i) => <button type="button" data-cat={k} aria-pressed={i === 0 ? "true" : "false"}>{label}</button>)}
+</div>
+<div class="seg sectors" role="group" aria-label="Secteur" id="pick-sector">
+  {SECTOR_KEYS.map((k) => (
+    <a href={url(`passage-du-jour/${k}/`)} data-sector={k} aria-current={k === sector ? "page" : undefined}>{latest.sectors[k].name}</a>
+  ))}
+</div>
+<div class="seg" role="group" aria-label="Jour" id="pick-day">
+  <button type="button" data-day={d0} aria-pressed={di === 0 ? "true" : "false"}>Ce matin</button>
+  <button type="button" data-day={d1} aria-pressed={di === 1 ? "true" : "false"}>Demain matin</button>
+</div>
+<div id="forecasts" data-default-sector={sector}>
+  {SECTOR_KEYS.map((s) => Object.keys(CATEGORIES).map((c) => dayList.map((d, i) => (
+    <Forecast sector={s} cat={c} day={d} visible={s === sector && c === "palombe" && i === di} />
+  ))))}
+</div>
+<p class="src"><span class="status-dot" class:list={[latest.mode === "degrade" && "warn"]}></span>Prévision calculée le <span class="num">{frDateTime(latest.generated_at)}</span>. <a href={url("etat/")}>État des sources</a></p>

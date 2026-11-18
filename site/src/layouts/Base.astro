@@ -1,0 +1,99 @@
+---
+import "@fontsource-variable/archivo/wdth.css";
+import "@fontsource/atkinson-hyperlegible/400.css";
+import "@fontsource/atkinson-hyperlegible/700.css";
+import "../styles/global.css";
+import Icon from "../components/Icon.astro";
+import { url, latest, frDateTime } from "../lib/data.js";
+
+const { title, description, crumbs = [], read = false, image = "og/seignosse-palombe.png", noindex = false, jsonld = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(url(image), Astro.site).href;
+const path = Astro.url.pathname;
+const nav = [
+  ["Passage du jour", url("")],
+  ["Secteurs", url("secteurs/")],
+  ["Espèces", url("especes/palombe/")],
+  ["Méthode", url("methode/")],
+];
+const ld = [
+  { "@context": "https://schema.org", "@type": "WebSite", name: "Les posées", url: new URL(url(""), Astro.site).href, inLanguage: "fr-FR" },
+  crumbs.length && {
+    "@context": "https://schema.org", "@type": "BreadcrumbList",
+    itemListElement: [["Accueil", url("")], ...crumbs].map(([name, href], i) => ({ "@type": "ListItem", position: i + 1, name, item: new URL(href, Astro.site).href })),
+  },
+  ...jsonld,
+].filter(Boolean);
+---
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
+  <meta name="theme-color" content="#21402e" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0c1210" media="(prefers-color-scheme: dark)" />
+  <link rel="manifest" href={url("manifest.webmanifest")} />
+  <link rel="icon" href={url("icons/icon-192.png")} type="image/png" />
+  <link rel="apple-touch-icon" href={url("icons/icon-192.png")} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="Les posées" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  {ld.map((x) => <script type="application/ld+json" set:html={JSON.stringify(x)} />)}
+  <script is:inline>
+    try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body data-base={url("")} data-generated={latest.generated_at}>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <header class="top">
+    <a class="brand" href={url("")}>
+      <span class="brand-mark"><Icon name="bird" size={20} /></span>
+      <b>Les posées</b>
+    </a>
+    <button class="dawn" id="theme" type="button" aria-pressed="false">
+      <Icon name="moon-star" size={18} /><span id="theme-label">Mode aube</span>
+    </button>
+  </header>
+  <nav class="nav" aria-label="Navigation principale">
+    {nav.map(([label, href]) => <a href={href} aria-current={path === href ? "page" : undefined}>{label}</a>)}
+  </nav>
+  <div id="net-banner" class="banner" hidden style="max-width:34rem;margin:0 auto 10px"></div>
+  {crumbs.length > 0 && (
+    <nav class="crumbs" aria-label="Fil d'Ariane" style={`max-width:${read ? "42rem" : "34rem"};margin:0 auto 8px`}>
+      <a href={url("")}>Accueil</a>
+      {crumbs.map(([name, href], i) => (<><span aria-hidden="true">›</span>{i === crumbs.length - 1 ? <span>{name}</span> : <a href={href}>{name}</a>}</>))}
+    </nav>
+  )}
+  <main id="contenu" class={read ? "read" : undefined}>
+    <slot />
+  </main>
+  <footer class="foot">
+    <p>Prévision indicative, non garantie. Respectez la réglementation et la sécurité : la dune est fréquentée par les promeneurs et les surfeurs.</p>
+    <p>Données mises à jour le <span class="num">{frDateTime(latest.generated_at)}</span>. Sources : palombe.com et GIFS France, Trektellen, Météo-France via Open-Meteo.</p>
+    <nav aria-label="Pages du site">
+      <a href={url("secteurs/")}>Secteurs</a>
+      <a href={url("especes/palombe/")}>Palombe</a>
+      <a href={url("especes/grives/")}>Grives</a>
+      <a href={url("guides/lire-le-vent/")}>Lire le vent</a>
+      <a href={url("methode/")}>Comment on calcule</a>
+      <a href={url("etat/")}>État des sources</a>
+      <a href={url("archives/")}>Archives</a>
+      <a href={url("mentions-legales/")}>Mentions légales</a>
+    </nav>
+  </footer>
+  <script>
+    import "../scripts/app.js";
+  </script>
+</body>
+</html>

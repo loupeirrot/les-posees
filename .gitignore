@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+data/*.db
+public/
+site/node_modules/
+site/dist/
+site/.astro/
+site/src/data/*.json
+site/public/data/
+site/public/og/
+site/public/icons/
+.DS_Store

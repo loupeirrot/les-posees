@@ -1,0 +1,130 @@
+name: Collecte et publication
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # en UTC ; hors saison, seule l'exécution de 5 h UTC fait le travail
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Interroger toutes les sources maintenant"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths: ["site/**", "pipeline/**", ".github/workflows/**", "schema.json"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  issues: write
+
+concurrency:
+  group: pipeline
+  cancel-in-progress: false
+
+env:
+  PALOMBE_COM_ENABLED: ${{ vars.PALOMBE_COM_ENABLED || 'true' }}
+  TREKTELLEN_ENABLED: ${{ vars.TREKTELLEN_ENABLED || 'true' }}
+  COLLECTOR_CONTACT: ${{ secrets.COLLECTOR_CONTACT }}
+  FORCE_FETCH: ${{ inputs.force && '1' || '' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.gate.outputs.run }}
+    steps:
+      - name: Saison ou hors saison
+        id: gate
+        run: |
+          md=$(TZ=Europe/Paris date +%m%d); h=$(date -u +%H); m=$(date -u +%M)
+          if [ "${{ github.event_name }}" != "schedule" ] || { [ "$md" -ge 0915 ] && [ "$md" -le 1130 ]; } || { [ "$h" = "05" ] && [ "$m" -lt 15 ]; }; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"; echo "Hors saison : rien à faire à cette heure."
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.run == 'true'
+
+      - name: Récupérer la base (branche data)
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          mkdir -p data
+          if git fetch --depth=1 origin data 2>/dev/null; then git show FETCH_HEAD:migration.db > data/migration.db; echo "base restaurée"; else echo "première exécution : base vide"; fi
+
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.run == 'true'
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Collecte
+        if: steps.gate.outputs.run == 'true'
+        working-directory: pipeline
+        run: |
+          pip install -q -r ../requirements.txt
+          python collect_meteo.py
+          python collect_palombe_flash.py
+          python collect_palombe_observations.py
+          python collect_palombe_comptages.py
+          python collect_trektellen.py
+          if [ ! -s ../data/migration.db ] || ! python -c "import sqlite3,sys;c=sqlite3.connect('../data/migration.db');sys.exit(0 if c.execute(\"select count(*) from observations where source='palombe.com / GIFS France' and date<'2026-01-01'\").fetchone()[0] else 1)"; then
+            python collect_palombe_comptages.py --backfill 2011
+          fi
+          python build_json.py
+          python validate.py
+          python og.py
+          python alerts.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sauver la base (branche data, un seul commit)
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          tmp=$(mktemp -d); cp data/migration.db "$tmp/"; cp public/latest.json "$tmp/"
+          cd "$tmp" && git init -q -b data && git add . && git -c user.name="collecteur" -c user.email="actions@users.noreply.github.com" commit -qm "Données du $(date -u +%FT%TZ)"
+          git push -q --force "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" data:data
+
+      - name: Sauvegarde quotidienne
+        if: steps.gate.outputs.run == 'true' && github.event_name == 'schedule'
+        id: daily
+        run: '[ "$(date -u +%H)" = "03" ] && [ "$(date -u +%M)" -lt 15 ] && echo "go=true" >> "$GITHUB_OUTPUT" || true'
+      - uses: actions/upload-artifact@v4
+        if: steps.daily.outputs.go == 'true'
+        with:
+          name: migration-db-${{ github.run_id }}
+          path: data/migration.db
+          retention-days: 30
+
+      - uses: actions/setup-node@v4
+        if: steps.gate.outputs.run == 'true'
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - uses: actions/configure-pages@v5
+        if: steps.gate.outputs.run == 'true'
+        id: pages
+      - name: Construire le site
+        if: steps.gate.outputs.run == 'true'
+        working-directory: site
+        run: |
+          npm ci --no-audit --no-fund
+          SITE_URL="${{ steps.pages.outputs.origin }}" BASE_PATH="${{ steps.pages.outputs.base_path }}/" npx astro build
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.gate.outputs.run == 'true'
+        with:
+          path: site/dist
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment

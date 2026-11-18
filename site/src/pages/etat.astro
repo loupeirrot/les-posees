@@ -1,0 +1,23 @@
+---
+import Base from "../layouts/Base.astro";
+import { latest, url, frDateTime, STATUS_WORDS } from "../lib/data.js";
+const dot = (s) => (s === "ok" || s === "vide" ? "" : s === "bloquée" || s === "erreur" || s === "format" ? "bad" : "warn");
+---
+<Base title="État des sources de données" description="Dernière lecture réussie de chaque source : palombe.com, GIFS France, Trektellen, météo." crumbs={[["État des sources", url("etat/")]]} read>
+  <h1>État des sources</h1>
+  <p class="lead">Mis à jour le {frDateTime(latest.generated_at)}. Quand une source tombe, le site le dit et continue avec les autres.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th scope="col">Source</th><th scope="col" style="text-align:left">État</th><th scope="col">Dernière réussite</th></tr></thead>
+      <tbody>
+        {latest.sources.map((s) => (
+          <tr>
+            <th scope="row"><a href={s.url} rel="noopener">{s.label}</a><br /><small class="src">{s.owner}</small></th>
+            <td style="text-align:left"><span class:list={["status-dot", dot(s.status)]}></span>{STATUS_WORDS[s.status] || s.status}{s.message ? <><br /><small class="src">{s.message}</small></> : null}</td>
+            <td>{s.last_ok_at ? frDateTime(s.last_ok_at) : "jamais"}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</Base>

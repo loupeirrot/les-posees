@@ -1,0 +1,2 @@
+ALERTE palombe_flash : coupée Source désactivée par interrupteur
+ALERTE meteo : bloquée robots.txt interdit https://api.open-meteo.com/v1/forecast?latitude=43.596%2C43.643%2C43.665%2C43.7%2C43.035%2C44.2&longitude=-1.458%2C-1.44%2C-1.44%2C-1.437%2C-1.022%2C-1.23&timezone=GMT&past_days=1&forecast_days=4&models=meteofrance_seamless&daily=sunrise%2Csunset&hourly=wind_speed_10m%2Cwind_direction_10m%2Cwind_gusts_10m%2Cwind_speed_925hPa%2Cwind_direction_925hPa%2Cprecipitation%2Ccloud_cover%2Ccloud_cover_low

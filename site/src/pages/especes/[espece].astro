@@ -1,0 +1,53 @@
+---
+import Base from "../../layouts/Base.astro";
+import { url } from "../../lib/data.js";
+
+export function getStaticPaths() {
+  return [{ params: { espece: "palombe" } }, { params: { espece: "grives" } }];
+}
+const { espece } = Astro.params;
+const P = {
+  palombe: {
+    title: "La palombe : quand et comment elle passe dans les Landes",
+    h1: "La palombe",
+    description: "Migration de la palombe (pigeon ramier) : passage de jour, rôle du vent, des comptages des cols et des signalements Flash. Comment le site prévoit le passage.",
+  },
+  grives: {
+    title: "Les grives : migration de nuit et posées du matin",
+    h1: "Les grives",
+    description: "Grive musicienne, mauvis, draine et litorne : une migration surtout nocturne, des posées à l'aube. Ce qui compte pour la prévision.",
+  },
+}[espece];
+---
+<Base title={P.title} description={P.description} crumbs={[["Espèces", url("especes/palombe/")], [P.h1, url(`especes/${espece}/`)]]} read image={`og/seignosse-${espece}.png`}>
+  <h1>{P.h1}</h1>
+  {espece === "palombe" ? (
+    <>
+      <p class="lead">La palombe (pigeon ramier, <i>Columba palumbus</i>) migre de jour, en vols parfois de plusieurs centaines d'oiseaux, du nord-est de l'Europe vers la péninsule Ibérique. Le gros du passage dans le Sud-Ouest a lieu en octobre et dans la première moitié de novembre.</p>
+      <h2>Ce qui la fait passer</h2>
+      <p>Les départs suivent les coups de froid au nord et les vents porteurs. Au-dessus des Landes, le vent du matin décide de la hauteur et de la route des vols : vent de face, ils passent bas et se posent ; vent porteur, ils filent haut. La pluie, le plafond bas et la brume côtière gâchent le passage ou le rendent invisible depuis le poste.</p>
+      <h2>Ce que le site regarde</h2>
+      <ul>
+        <li>Le vent au sol et à 800 m, la pluie et la brume de la matinée (modèles Météo-France).</li>
+        <li>Les signalements Flash de palombe.com au nord des secteurs : un vol vu en Gironde annonce ce qui peut arriver sur la dune.</li>
+        <li>Les comptages des cols basques (Arnéguy, Banca, Sare, Urrugne) réalisés pour le GIFS France : ils confirment, la veille, l'intensité du passage.</li>
+      </ul>
+      <h2>Réglementation</h2>
+      <p>Les dates, les modes de chasse autorisés et les règles du tir au vol depuis une installation surélevée sont fixés chaque année par arrêté. Consultez l'arrêté de la préfecture des Landes de la saison en cours et la Fédération des chasseurs des Landes avant de chasser. Le site ne reproduit pas ces dates tant qu'elles n'ont pas été relues par un technicien.</p>
+    </>
+  ) : (
+    <>
+      <p class="lead">Grive musicienne, grive mauvis, grive draine et grive litorne migrent surtout de nuit. On les découvre le matin, posées dans les pins, les haies et les arbousiers de l'arrière-dune.</p>
+      <h2>Ce qui fait une bonne matinée</h2>
+      <p>Une nuit dégagée avec un vent porteur de nord ou de nord-est, sans pluie, amène des oiseaux. Une aube calme et sèche les garde posés. La pluie de nuit et le vent de sud bloquent les arrivées.</p>
+      <h2>Ce que le site regarde</h2>
+      <ul>
+        <li>Le vent moyen de la nuit (de 19 h à 7 h), la pluie de la nuit, le vent et la pluie à l'aube.</li>
+        <li>Le radar météo de Momuy sert à étudier les nuits passées. Ses données arrivent avec 2 à 4 jours de retard : il ne sert pas encore à la prévision du matin.</li>
+      </ul>
+      <p>Sur quatre saisons de radar, la règle du vent ne prévoit pas mieux les grosses nuits qu'un taux fixe. C'est expliqué sur la page <a href={url("methode/")}>comment on calcule</a>.</p>
+      <h2>Réglementation</h2>
+      <p>Les dates et les espèces chassables sont fixées chaque année par arrêté. Consultez l'arrêté de la préfecture des Landes de la saison en cours et la Fédération des chasseurs des Landes.</p>
+    </>
+  )}
+</Base>

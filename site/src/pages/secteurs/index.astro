@@ -1,0 +1,12 @@
+---
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import { latest, url, SECTOR_KEYS } from "../../lib/data.js";
+---
+<Base title="Les secteurs de la dune, de Labenne à Seignosse" description="Labenne, Capbreton, Hossegor et Seignosse : prévision du jour, zonages (forêts publiques, Natura 2000) et sécurité sur la dune." crumbs={[["Secteurs", url("secteurs/")]]} read>
+  <h1>Les secteurs, de Labenne à Seignosse</h1>
+  <p class="lead">Quatre communes de la côte sud des Landes. Le site ne localise aucun poste : chaque secteur est un point de référence à l'échelle de la commune, pour la météo et les signalements.</p>
+  <div class="links">
+    {SECTOR_KEYS.map((k) => <a href={url(`secteurs/${k}/`)}>{latest.sectors[k].name}<Icon name="chevron-right" /></a>)}
+  </div>
+</Base>

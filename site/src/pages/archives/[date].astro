@@ -1,0 +1,32 @@
+---
+import Base from "../../layouts/Base.astro";
+import { archives, latest, url, frDate, frDateTime, nf } from "../../lib/data.js";
+
+export function getStaticPaths() {
+  return archives.map((a) => ({ params: { date: a.date }, props: { a } }));
+}
+const { a } = Astro.props;
+const label = frDate(a.date);
+---
+<Base title={`Passage du ${label} : prévision et observations`} description={`Prévision figée le matin du ${label} pour Labenne, Capbreton, Hossegor et Seignosse, et signalements de la journée.`}
+  crumbs={[["Archives", url("archives/")], [label, url(`archives/${a.date}/`)]]} read>
+  <h1>Passage du {label}</h1>
+  <p class="lead">Prévision figée le {frDateTime(a.frozen_at)}.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th scope="col">Secteur</th><th scope="col">Palombe</th><th scope="col">Grives</th><th scope="col">Vent 8 h</th></tr></thead>
+      <tbody>
+        {Object.entries(a.sectors).map(([k, v]) => (
+          <tr><th scope="row">{latest.sectors[k]?.name ?? k}</th><td>{v.palombe?.word ?? "–"}<br /><small class="src">{v.palombe?.window}</small></td><td>{v.grives?.word ?? "–"}</td><td>{v.palombe?.wind ?? "–"}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <h2>Ce qui a été signalé</h2>
+  <ul>
+    <li>Signalements Flash dans le sud des Landes et le nord du Pays basque : <b class="num">{nf(a.vu.flash_sud_landes)}</b>.</li>
+    <li>Observations de chasseurs dans les Landes sur palombe.com : <b class="num">{nf(a.vu.observations_landes)}</b>, pour <span class="num">{nf(a.vu.vols_landes)}</span> vols.</li>
+    <li>Palombes comptées à l'aller aux quatre cols : <b class="num">{nf(a.vu.cols_aller)}</b>.</li>
+  </ul>
+  <p class="src">Ces repères ne sont pas encore un score : le score de justesse sera publié quand assez de journées auront été observées sur les secteurs mêmes.</p>
+</Base>

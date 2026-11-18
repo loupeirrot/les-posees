@@ -1,0 +1,19 @@
+---
+// Carte chargée à la demande (MapLibre + tuiles OpenFreeMap) : secteurs, vent à 8 h, signalements Flash arrondis.
+import Icon from "./Icon.astro";
+import { latest } from "../lib/data.js";
+
+const payload = {
+  sectors: Object.entries(latest.sectors).map(([k, s]) => ({ key: k, ...s })),
+  flash: latest.flash.points.map((p) => ({ lat: p.lat, lon: p.lon, direction: p.direction, size: p.size_class, time: p.time })),
+  wind: Object.fromEntries(Object.entries(latest.forecast).map(([k, v]) => [k, Object.fromEntries(Object.entries(v.palombe).map(([d, f]) => [d, f ? f.wind.dir : null]))])),
+};
+---
+<section class="card" aria-labelledby="carte">
+  <h2 id="carte"><Icon name="map" />Carte des signalements</h2>
+  <p>Secteurs, vent à 8 h et signalements Flash des dernières 24 h (vert : aller, orange : recul).</p>
+  <div class="map-box" id="map-box" hidden><div id="map"></div></div>
+  <button class="btn ghost" id="map-load" type="button"><Icon name="map" size={18} />Afficher la carte</button>
+  <p class="src">Fond de carte © <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a>, données © contributeurs <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>. Chargée seulement à la demande, pour économiser le réseau.</p>
+  <script type="application/json" id="map-data" set:html={JSON.stringify(payload)} />
+</section>

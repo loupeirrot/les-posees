@@ -1,0 +1,19 @@
+---
+import Base from "../layouts/Base.astro";
+import Today from "../components/Today.astro";
+import Signals from "../components/Signals.astro";
+import MapBlock from "../components/MapBlock.astro";
+import { latest, frDate, DEFAULT_SECTOR } from "../lib/data.js";
+
+const f = latest.forecast[DEFAULT_SECTOR].palombe[latest.today];
+const date = frDate(latest.today);
+const title = `Passage des palombes du ${date} : Landes, de Labenne à Seignosse`;
+const description = f
+  ? `${f.word} à Seignosse ce matin (${f.window.label.toLowerCase()} ${f.window.text}, vent ${f.wind.dir_name} ${f.wind.speed} km/h). Prévision des passages de palombes et de grives sur la dune landaise, signalements et comptages des cols.`
+  : `Signalements Flash, comptages des cols et observations du ${date} pour la côte sud des Landes. Prévision météo momentanément indisponible.`;
+---
+<Base title={title} description={description}>
+  <Today heading="Est-ce que ça va passer ?" sector={DEFAULT_SECTOR} />
+  <Signals />
+  <MapBlock />
+</Base>
