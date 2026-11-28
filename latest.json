@@ -1,0 +1,2462 @@
+{
+ "generated_at": "2026-11-28T17:46:17Z",
+ "timezone": "Europe/Paris",
+ "today": "2026-11-28",
+ "mode": "complet",
+ "sectors": {
+  "labenne": {
+   "name": "Labenne",
+   "lat": 43.596,
+   "lon": -1.458
+  },
+  "capbreton": {
+   "name": "Capbreton",
+   "lat": 43.643,
+   "lon": -1.44
+  },
+  "hossegor": {
+   "name": "Hossegor",
+   "lat": 43.665,
+   "lon": -1.44
+  },
+  "seignosse": {
+   "name": "Seignosse",
+   "lat": 43.7,
+   "lon": -1.437
+  }
+ },
+ "forecast": {
+  "labenne": {
+   "palombe": {
+    "2026-11-28": {
+     "level": "good",
+     "word": "Ça devrait passer",
+     "score": 3,
+     "total": 3,
+     "criteria": [
+      {
+       "ok": true,
+       "label": "Vent de secteur nord à sud-est",
+       "detail": "À 8 h : est, 10 km/h"
+      },
+      {
+       "ok": true,
+       "label": "Pas de pluie dans la matinée",
+       "detail": "0.0 mm entre 7 h et 11 h"
+      },
+      {
+       "ok": true,
+       "label": "Ciel lisible, pas de brume",
+       "detail": "Nuages bas 0 % · pas de brume"
+      },
+      {
+       "ok": true,
+       "label": "Pas de coup de vent",
+       "detail": "Rafales jusqu'à 23 km/h",
+       "blocking": true
+      }
+     ],
+     "window": {
+      "label": "Fenêtre probable",
+      "start": 481,
+      "end": 676,
+      "text": "8 h 01 à 11 h 16"
+     },
+     "sunrise": "8 h 16",
+     "wind": {
+      "dir": 90,
+      "speed": 10,
+      "dir_short": "E",
+      "dir_name": "est",
+      "force": "léger"
+     },
+     "wind_800": {
+      "dir": 132,
+      "speed": 14,
+      "dir_short": "SE"
+     },
+     "reading": "Vent d'est : les vols dérivent vers la côte et longent la dune.",
+     "fog": null,
+     "hours": [
+      {
+       "h": 6,
+       "wind_dir": 87.37939728796482,
+       "wind_speed": 8.421252843271942,
+       "gusts": 17.499981304630637,
+       "wind_dir_800": 106.28341367423735,
+       "wind_speed_800": 15.076362168291606,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 84.87524700164795
+      },
+      {
+       "h": 7,
+       "wind_dir": 91.75106987031177,
+       "wind_speed": 8.700886811502277,
+       "gusts": 17.37568053379655,
+       "wind_dir_800": 122.13938784244624,
+       "wind_speed_800": 15.553507839170296,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 84.80173301696777
+      },
+      {
+       "h": 8,
+       "wind_dir": 90.15281337313354,
+       "wind_speed": 10.1452776376158,
+       "gusts": 21.61761827096343,
+       "wind_dir_800": 132.3789955745632,
+       "wind_speed_800": 14.357144989870752,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 88.1594409942627
+      },
+      {
+       "h": 9,
+       "wind_dir": 93.15864074975252,
+       "wind_speed": 9.884830960538238,
+       "gusts": 22.80341782718897,
+       "wind_dir_800": 137.00622505222765,
+       "wind_speed_800": 12.063510709520648,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 87.93523025512695
+      },
+      {
+       "h": 10,
+       "wind_dir": 97.00697383098304,
+       "wind_speed": 9.624778744624928,
+       "gusts": 22.47802837220952,
+       "wind_dir_800": 134.78020290304664,
+       "wind_speed_800": 12.225074009071529,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 79.55317687988281
+      },
+      {
+       "h": 11,
+       "wind_dir": 104.89297659508884,
+       "wind_speed": 9.320583569258451,
+       "gusts": 22.59504436478019,
+       "wind_dir_800": 142.74750972485288,
+       "wind_speed_800": 14.761931739431628,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 71.00655937194824
+      },
+      {
+       "h": 12,
+       "wind_dir": 101.12706015189178,
+       "wind_speed": 9.462179175205529,
+       "gusts": 22.594177085906267,
+       "wind_dir_800": 152.816420779361,
+       "wind_speed_800": 15.950169435664517,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 63.45293045043945
+      }
+     ]
+    },
+    "2026-11-29": {
+     "level": "low",
+     "word": "Peu probable",
+     "score": 0,
+     "total": 3,
+     "criteria": [
+      {
+       "ok": false,
+       "label": "Vent de secteur nord à sud-est",
+       "detail": "À 8 h : sud, 4 km/h"
+      },
+      {
+       "ok": false,
+       "label": "Pas de pluie dans la matinée",
+       "detail": "12.2 mm entre 7 h et 11 h"
+      },
+      {
+       "ok": false,
+       "label": "Ciel lisible, pas de brume",
+       "detail": "Nuages bas 100 % · pas de brume"
+      },
+      {
+       "ok": true,
+       "label": "Pas de coup de vent",
+       "detail": "Rafales jusqu'à 41 km/h",
+       "blocking": true
+      }
+     ],
+     "window": {
+      "label": "Fenêtre probable",
+      "start": 482,
+      "end": 677,
+      "text": "8 h 02 à 11 h 17"
+     },
+     "sunrise": "8 h 17",
+     "wind": {
+      "dir": 180,
+      "speed": 4,
+      "dir_short": "S",
+      "dir_name": "sud",
+      "force": "calme"
+     },
+     "wind_800": {
+      "dir": 282,
+      "speed": 19,
+      "dir_short": "O"
+     },
+     "reading": "Vent quasi nul : les vols passent à leur hauteur habituelle, la dune ne les concentre pas.",
+     "fog": null,
+     "hours": [
+      {
+       "h": 6,
+       "wind_dir": 114.14051564782858,
+       "wind_speed": 5.694077695626766,
+       "gusts": 7.494513650983572,
+       "wind_dir_800": 297.33467906694085,
+       "wind_speed_800": 11.253057953465367,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 18.50329994596541,
+       "humidity": 92.0006914138794
+      },
+      {
+       "h": 7,
+       "wind_dir": 131.87779764202423,
+       "wind_speed": 4.589464098913595,
+       "gusts": 7.4126992469653485,
+       "wind_dir_800": 284.800115958835,
+       "wind_speed_800": 19.20191975090326,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 100.00329994596541,
+       "humidity": 89.90884017944336
+      },
+      {
+       "h": 8,
+       "wind_dir": 180.00069914583582,
+       "wind_speed": 4.237107100524009,
+       "gusts": 7.217648234590889,
+       "wind_dir_800": 282.37978396399916,
+       "wind_speed_800": 19.005627654879987,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 100.00329994596541,
+       "humidity": 89.55447483062744
+      },
+      {
+       "h": 9,
+       "wind_dir": 241.14915267191827,
+       "wind_speed": 10.699547306913884,
+       "gusts": 21.503271727636456,
+       "wind_dir_800": 301.35916264562115,
+       "wind_speed_800": 23.70179278020645,
+       "visibility": null,
+       "precip": 0.0947265625,
+       "cloud_low": 100.00329994596541,
+       "humidity": 89.90183734893799
+      },
+      {
+       "h": 10,
+       "wind_dir": 227.2539707813412,
+       "wind_speed": 8.72279657078907,
+       "gusts": 23.423270474933087,
+       "wind_dir_800": 296.0606722936494,
+       "wind_speed_800": 14.404057467177434,
+       "visibility": null,
+       "precip": 0.248046875,
+       "cloud_low": 100.00329994596541,
+       "humidity": 90.6882095336914
+      },
+      {
+       "h": 11,
+       "wind_dir": 333.1388600151986,
+       "wind_speed": 17.422693783789875,
+       "gusts": 41.49997376035899,
+       "wind_dir_800": 324.92194213840537,
+       "wind_speed_800": 31.5964383697241,
+       "visibility": null,
+       "precip": 11.8515625,
+       "cloud_low": 100.00329994596541,
+       "humidity": 93.94891262054443
+      },
+      {
+       "h": 12,
+       "wind_dir": 319.89589501544833,
+       "wind_speed": 8.982770844642074,
+       "gusts": 44.558663544338195,
+       "wind_dir_800": 316.1432297593875,
+       "wind_speed_800": 35.7634579824626,
+       "visibility": null,
+       "precip": 3.3896484375,
+       "cloud_low": 75.00329994596541,
+       "humidity": 93.15991306304932
+      }
+     ]
+    }
+   },
+   "grives": {
+    "2026-11-28": {
+     "level": "good",
+     "word": "Ça devrait passer",
+     "score": 3,
+     "total": 3,
+     "criteria": [
+      {
+       "ok": true,
+       "label": "Vent de nuit porteur (nord-ouest à est)",
+       "detail": "Moyenne de la nuit : est, 8 km/h"
+      },
+      {
+       "ok": true,
+       "label": "Nuit sèche",
+       "detail": "0.0 mm entre 19 h et 7 h"
+      },
+      {
+       "ok": true,
+       "label": "Aube calme et sèche",
+       "detail": "Vent moyen 10 km/h, pluie 0.0 mm (7 h – 10 h)"
+      }
+     ],
+     "window": {
+      "label": "Posées probables",
+      "start": 466,
+      "end": 630,
+      "text": "7 h 46 à 10 h 30"
+     },
+     "sunrise": "8 h 16",
+     "wind": {
+      "dir": 90,
+      "speed": 10,
+      "dir_short": "E",
+      "dir_name": "est",
+      "force": "léger"
+     },
+     "wind_800": {
+      "dir": 132,
+      "speed": 14,
+      "dir_short": "SE"
+     },
+     "reading": "Nuit à vent porteur et sèche : bonne nuit pour une arrivée de grives. Regarde les pins et les haies dès l'aube.",
+     "fog": null,
+     "hours": [
+      {
+       "h": 6,
+       "wind_dir": 87.37939728796482,
+       "wind_speed": 8.421252843271942,
+       "gusts": 17.499981304630637,
+       "wind_dir_800": 106.28341367423735,
+       "wind_speed_800": 15.076362168291606,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 84.87524700164795
+      },
+      {
+       "h": 7,
+       "wind_dir": 91.75106987031177,
+       "wind_speed": 8.700886811502277,
+       "gusts": 17.37568053379655,
+       "wind_dir_800": 122.13938784244624,
+       "wind_speed_800": 15.553507839170296,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 84.80173301696777
+      },
+      {
+       "h": 8,
+       "wind_dir": 90.15281337313354,
+       "wind_speed": 10.1452776376158,
+       "gusts": 21.61761827096343,
+       "wind_dir_800": 132.3789955745632,
+       "wind_speed_800": 14.357144989870752,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 88.1594409942627
+      },
+      {
+       "h": 9,
+       "wind_dir": 93.15864074975252,
+       "wind_speed": 9.884830960538238,
+       "gusts": 22.80341782718897,
+       "wind_dir_800": 137.00622505222765,
+       "wind_speed_800": 12.063510709520648,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 87.93523025512695
+      },
+      {
+       "h": 10,
+       "wind_dir": 97.00697383098304,
+       "wind_speed": 9.624778744624928,
+       "gusts": 22.47802837220952,
+       "wind_dir_800": 134.78020290304664,
+       "wind_speed_800": 12.225074009071529,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 79.55317687988281
+      },
+      {
+       "h": 11,
+       "wind_dir": 104.89297659508884,
+       "wind_speed": 9.320583569258451,
+       "gusts": 22.59504436478019,
+       "wind_dir_800": 142.74750972485288,
+       "wind_speed_800": 14.761931739431628,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 71.00655937194824
+      },
+      {
+       "h": 12,
+       "wind_dir": 101.12706015189178,
+       "wind_speed": 9.462179175205529,
+       "gusts": 22.594177085906267,
+       "wind_dir_800": 152.816420779361,
+       "wind_speed_800": 15.950169435664517,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 63.45293045043945
+      }
+     ]
+    },
+    "2026-11-29": {
+     "level": "maybe",
+     "word": "Possible",
+     "score": 2,
+     "total": 3,
+     "criteria": [
+      {
+       "ok": true,
+       "label": "Vent de nuit porteur (nord-ouest à est)",
+       "detail": "Moyenne de la nuit : est, 6 km/h"
+      },
+      {
+       "ok": true,
+       "label": "Nuit sèche",
+       "detail": "0.0 mm entre 19 h et 7 h"
+      },
+      {
+       "ok": false,
+       "label": "Aube calme et sèche",
+       "detail": "Vent moyen 7 km/h, pluie 0.3 mm (7 h – 10 h)"
+      }
+     ],
+     "window": {
+      "label": "Posées probables",
+      "start": 467,
+      "end": 630,
+      "text": "7 h 47 à 10 h 30"
+     },
+     "sunrise": "8 h 17",
+     "wind": {
+      "dir": 180,
+      "speed": 4,
+      "dir_short": "S",
+      "dir_name": "sud",
+      "force": "calme"
+     },
+     "wind_800": {
+      "dir": 282,
+      "speed": 19,
+      "dir_short": "O"
+     },
+     "reading": "Conditions moyennes cette nuit : quelques posées possibles, pas de grosse arrivée attendue.",
+     "fog": null,
+     "hours": [
+      {
+       "h": 6,
+       "wind_dir": 114.14051564782858,
+       "wind_speed": 5.694077695626766,
+       "gusts": 7.494513650983572,
+       "wind_dir_800": 297.33467906694085,
+       "wind_speed_800": 11.253057953465367,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 18.50329994596541,
+       "humidity": 92.0006914138794
+      },
+      {
+       "h": 7,
+       "wind_dir": 131.87779764202423,
+       "wind_speed": 4.589464098913595,
+       "gusts": 7.4126992469653485,
+       "wind_dir_800": 284.800115958835,
+       "wind_speed_800": 19.20191975090326,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 100.00329994596541,
+       "humidity": 89.90884017944336
+      },
+      {
+       "h": 8,
+       "wind_dir": 180.00069914583582,
+       "wind_speed": 4.237107100524009,
+       "gusts": 7.217648234590889,
+       "wind_dir_800": 282.37978396399916,
+       "wind_speed_800": 19.005627654879987,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 100.00329994596541,
+       "humidity": 89.55447483062744
+      },
+      {
+       "h": 9,
+       "wind_dir": 241.14915267191827,
+       "wind_speed": 10.699547306913884,
+       "gusts": 21.503271727636456,
+       "wind_dir_800": 301.35916264562115,
+       "wind_speed_800": 23.70179278020645,
+       "visibility": null,
+       "precip": 0.0947265625,
+       "cloud_low": 100.00329994596541,
+       "humidity": 89.90183734893799
+      },
+      {
+       "h": 10,
+       "wind_dir": 227.2539707813412,
+       "wind_speed": 8.72279657078907,
+       "gusts": 23.423270474933087,
+       "wind_dir_800": 296.0606722936494,
+       "wind_speed_800": 14.404057467177434,
+       "visibility": null,
+       "precip": 0.248046875,
+       "cloud_low": 100.00329994596541,
+       "humidity": 90.6882095336914
+      },
+      {
+       "h": 11,
+       "wind_dir": 333.1388600151986,
+       "wind_speed": 17.422693783789875,
+       "gusts": 41.49997376035899,
+       "wind_dir_800": 324.92194213840537,
+       "wind_speed_800": 31.5964383697241,
+       "visibility": null,
+       "precip": 11.8515625,
+       "cloud_low": 100.00329994596541,
+       "humidity": 93.94891262054443
+      },
+      {
+       "h": 12,
+       "wind_dir": 319.89589501544833,
+       "wind_speed": 8.982770844642074,
+       "gusts": 44.558663544338195,
+       "wind_dir_800": 316.1432297593875,
+       "wind_speed_800": 35.7634579824626,
+       "visibility": null,
+       "precip": 3.3896484375,
+       "cloud_low": 75.00329994596541,
+       "humidity": 93.15991306304932
+      }
+     ]
+    }
+   }
+  },
+  "capbreton": {
+   "palombe": {
+    "2026-11-28": {
+     "level": "good",
+     "word": "Ça devrait passer",
+     "score": 3,
+     "total": 3,
+     "criteria": [
+      {
+       "ok": true,
+       "label": "Vent de secteur nord à sud-est",
+       "detail": "À 8 h : est, 18 km/h"
+      },
+      {
+       "ok": true,
+       "label": "Pas de pluie dans la matinée",
+       "detail": "0.0 mm entre 7 h et 11 h"
+      },
+      {
+       "ok": true,
+       "label": "Ciel lisible, pas de brume",
+       "detail": "Nuages bas 0 % · pas de brume"
+      },
+      {
+       "ok": true,
+       "label": "Pas de coup de vent",
+       "detail": "Rafales jusqu'à 25 km/h",
+       "blocking": true
+      }
+     ],
+     "window": {
+      "label": "Fenêtre probable",
+      "start": 481,
+      "end": 676,
+      "text": "8 h 01 à 11 h 16"
+     },
+     "sunrise": "8 h 16",
+     "wind": {
+      "dir": 90,
+      "speed": 18,
+      "dir_short": "E",
+      "dir_name": "est",
+      "force": "établi"
+     },
+     "wind_800": {
+      "dir": 133,
+      "speed": 15,
+      "dir_short": "SE"
+     },
+     "reading": "Vent d'est : les vols dérivent vers la côte et longent la dune.",
+     "fog": null,
+     "hours": [
+      {
+       "h": 6,
+       "wind_dir": 89.75439728796482,
+       "wind_speed": 14.355627843271941,
+       "gusts": 21.38123130463064,
+       "wind_dir_800": 107.72366274661493,
+       "wind_speed_800": 14.070700558460969,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 87.84399700164795
+      },
+      {
+       "h": 7,
+       "wind_dir": 90.25106987031177,
+       "wind_speed": 14.607136811502277,
+       "gusts": 19.878805533796548,
+       "wind_dir_800": 118.74385652087415,
+       "wind_speed_800": 15.919112181875809,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 87.92673301696777
+      },
+      {
+       "h": 8,
+       "wind_dir": 89.90281337313354,
+       "wind_speed": 18.1327776376158,
+       "gusts": 24.93636827096343,
+       "wind_dir_800": 132.83983092772849,
+       "wind_speed_800": 15.307597913642951,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 88.9094409942627
+      },
+      {
+       "h": 9,
+       "wind_dir": 94.15864074975252,
+       "wind_speed": 16.944205960538238,
+       "gusts": 25.30654282718897,
+       "wind_dir_800": 137.29304413094417,
+       "wind_speed_800": 12.543457258760503,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 88.12273025512695
+      },
+      {
+       "h": 10,
+       "wind_dir": 95.88197383098304,
+       "wind_speed": 16.037278744624928,
+       "gusts": 23.85615337220952,
+       "wind_dir_800": 136.0676164685542,
+       "wind_speed_800": 12.426014958797726,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 80.67817687988281
+      },
+      {
+       "h": 11,
+       "wind_dir": 106.64297659508884,
+       "wind_speed": 14.439333569258451,
+       "gusts": 23.35441936478019,
+       "wind_dir_800": 145.95156880714222,
+       "wind_speed_800": 14.452872906518648,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 74.28780937194824
+      },
+      {
+       "h": 12,
+       "wind_dir": 104.00206015189178,
+       "wind_speed": 14.805929175205529,
+       "gusts": 22.22855208590627,
+       "wind_dir_800": 154.45744884327587,
+       "wind_speed_800": 15.725342181322297,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 68.07793045043945
+      }
+     ]
+    },
+    "2026-11-29": {
+     "level": "low",
+     "word": "Peu probable",
+     "score": 0,
+     "total": 3,
+     "criteria": [
+      {
+       "ok": false,
+       "label": "Vent de secteur nord à sud-est",
+       "detail": "À 8 h : sud, 6 km/h"
+      },
+      {
+       "ok": false,
+       "label": "Pas de pluie dans la matinée",
+       "detail": "8.4 mm entre 7 h et 11 h"
+      },
+      {
+       "ok": false,
+       "label": "Ciel lisible, pas de brume",
+       "detail": "Nuages bas 100 % · pas de brume"
+      },
+      {
+       "ok": false,
+       "label": "Pas de coup de vent",
+       "detail": "Rafales jusqu'à 53 km/h",
+       "blocking": true
+      }
+     ],
+     "window": {
+      "label": "Fenêtre probable",
+      "start": 483,
+      "end": 678,
+      "text": "8 h 03 à 11 h 18"
+     },
+     "sunrise": "8 h 18",
+     "wind": {
+      "dir": 164,
+      "speed": 6,
+      "dir_short": "S",
+      "dir_name": "sud",
+      "force": "calme"
+     },
+     "wind_800": {
+      "dir": 278,
+      "speed": 21,
+      "dir_short": "O"
+     },
+     "reading": "Vent quasi nul : les vols passent à leur hauteur habituelle, la dune ne les concentre pas.",
+     "fog": null,
+     "hours": [
+      {
+       "h": 6,
+       "wind_dir": 117.01551564782858,
+       "wind_speed": 6.537827695626766,
+       "gusts": 8.872638650983573,
+       "wind_dir_800": 296.3076734465781,
+       "wind_speed_800": 11.151532209824039,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 21.00329994596541,
+       "humidity": 85.6256914138794
+      },
+      {
+       "h": 7,
+       "wind_dir": 131.25279764202423,
+       "wind_speed": 4.617589098913595,
+       "gusts": 8.368949246965348,
+       "wind_dir_800": 283.6668393845605,
+       "wind_speed_800": 17.427033700463866,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 100.00329994596541,
+       "humidity": 84.00259017944336
+      },
+      {
+       "h": 8,
+       "wind_dir": 164.25069914583582,
+       "wind_speed": 5.783982100524009,
+       "gusts": 8.005148234590889,
+       "wind_dir_800": 278.4197013113043,
+       "wind_speed_800": 20.528716106733516,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 100.00329994596541,
+       "humidity": 83.24197483062744
+      },
+      {
+       "h": 9,
+       "wind_dir": 257.0241526719183,
+       "wind_speed": 25.183922306913882,
+       "gusts": 30.897021727636456,
+       "wind_dir_800": 296.9290299650129,
+       "wind_speed_800": 18.789343263496345,
+       "visibility": null,
+       "precip": 0.017578125,
+       "cloud_low": 100.00329994596541,
+       "humidity": 85.15183734893799
+      },
+      {
+       "h": 10,
+       "wind_dir": 244.6289707813412,
+       "wind_speed": 18.20092157078907,
+       "gusts": 29.863895474933088,
+       "wind_dir_800": 346.4868780390572,
+       "wind_speed_800": 13.971047323496828,
+       "visibility": null,
+       "precip": 0.091796875,
+       "cloud_low": 100.00329994596541,
+       "humidity": 85.7507095336914
+      },
+      {
+       "h": 11,
+       "wind_dir": 330.1388600151986,
+       "wind_speed": 43.241443783789876,
+       "gusts": 53.17184876035899,
+       "wind_dir_800": 313.3908682486246,
+       "wind_speed_800": 31.3350941503553,
+       "visibility": null,
+       "precip": 8.251953125,
+       "cloud_low": 100.00329994596541,
+       "humidity": 85.60516262054443
+      },
+      {
+       "h": 12,
+       "wind_dir": 335.27089501544833,
+       "wind_speed": 17.110895844642073,
+       "gusts": 52.3492885443382,
+       "wind_dir_800": 314.7142290599352,
+       "wind_speed_800": 37.16482766132951,
+       "visibility": null,
+       "precip": 2.0771484375,
+       "cloud_low": 60.00329994596541,
+       "humidity": 85.40991306304932
+      }
+     ]
+    }
+   },
+   "grives": {
+    "2026-11-28": {
+     "level": "good",
+     "word": "Ça devrait passer",
+     "score": 3,
+     "total": 3,
+     "criteria": [
+      {
+       "ok": true,
+       "label": "Vent de nuit porteur (nord-ouest à est)",
+       "detail": "Moyenne de la nuit : est, 12 km/h"
+      },
+      {
+       "ok": true,
+       "label": "Nuit sèche",
+       "detail": "0.0 mm entre 19 h et 7 h"
+      },
+      {
+       "ok": true,
+       "label": "Aube calme et sèche",
+       "detail": "Vent moyen 16 km/h, pluie 0.0 mm (7 h – 10 h)"
+      }
+     ],
+     "window": {
+      "label": "Posées probables",
+      "start": 466,
+      "end": 630,
+      "text": "7 h 46 à 10 h 30"
+     },
+     "sunrise": "8 h 16",
+     "wind": {
+      "dir": 90,
+      "speed": 18,
+      "dir_short": "E",
+      "dir_name": "est",
+      "force": "établi"
+     },
+     "wind_800": {
+      "dir": 133,
+      "speed": 15,
+      "dir_short": "SE"
+     },
+     "reading": "Nuit à vent porteur et sèche : bonne nuit pour une arrivée de grives. Regarde les pins et les haies dès l'aube.",
+     "fog": null,
+     "hours": [
+      {
+       "h": 6,
+       "wind_dir": 89.75439728796482,
+       "wind_speed": 14.355627843271941,
+       "gusts": 21.38123130463064,
+       "wind_dir_800": 107.72366274661493,
+       "wind_speed_800": 14.070700558460969,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 87.84399700164795
+      },
+      {
+       "h": 7,
+       "wind_dir": 90.25106987031177,
+       "wind_speed": 14.607136811502277,
+       "gusts": 19.878805533796548,
+       "wind_dir_800": 118.74385652087415,
+       "wind_speed_800": 15.919112181875809,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 87.92673301696777
+      },
+      {
+       "h": 8,
+       "wind_dir": 89.90281337313354,
+       "wind_speed": 18.1327776376158,
+       "gusts": 24.93636827096343,
+       "wind_dir_800": 132.83983092772849,
+       "wind_speed_800": 15.307597913642951,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 88.9094409942627
+      },
+      {
+       "h": 9,
+       "wind_dir": 94.15864074975252,
+       "wind_speed": 16.944205960538238,
+       "gusts": 25.30654282718897,
+       "wind_dir_800": 137.29304413094417,
+       "wind_speed_800": 12.543457258760503,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 88.12273025512695
+      },
+      {
+       "h": 10,
+       "wind_dir": 95.88197383098304,
+       "wind_speed": 16.037278744624928,
+       "gusts": 23.85615337220952,
+       "wind_dir_800": 136.0676164685542,
+       "wind_speed_800": 12.426014958797726,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 80.67817687988281
+      },
+      {
+       "h": 11,
+       "wind_dir": 106.64297659508884,
+       "wind_speed": 14.439333569258451,
+       "gusts": 23.35441936478019,
+       "wind_dir_800": 145.95156880714222,
+       "wind_speed_800": 14.452872906518648,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 74.28780937194824
+      },
+      {
+       "h": 12,
+       "wind_dir": 104.00206015189178,
+       "wind_speed": 14.805929175205529,
+       "gusts": 22.22855208590627,
+       "wind_dir_800": 154.45744884327587,
+       "wind_speed_800": 15.725342181322297,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 68.07793045043945
+      }
+     ]
+    },
+    "2026-11-29": {
+     "level": "good",
+     "word": "Ça devrait passer",
+     "score": 3,
+     "total": 3,
+     "criteria": [
+      {
+       "ok": true,
+       "label": "Vent de nuit porteur (nord-ouest à est)",
+       "detail": "Moyenne de la nuit : est, 7 km/h"
+      },
+      {
+       "ok": true,
+       "label": "Nuit sèche",
+       "detail": "0.0 mm entre 19 h et 7 h"
+      },
+      {
+       "ok": true,
+       "label": "Aube calme et sèche",
+       "detail": "Vent moyen 13 km/h, pluie 0.1 mm (7 h – 10 h)"
+      }
+     ],
+     "window": {
+      "label": "Posées probables",
+      "start": 468,
+      "end": 630,
+      "text": "7 h 48 à 10 h 30"
+     },
+     "sunrise": "8 h 18",
+     "wind": {
+      "dir": 164,
+      "speed": 6,
+      "dir_short": "S",
+      "dir_name": "sud",
+      "force": "calme"
+     },
+     "wind_800": {
+      "dir": 278,
+      "speed": 21,
+      "dir_short": "O"
+     },
+     "reading": "Nuit à vent porteur et sèche : bonne nuit pour une arrivée de grives. Regarde les pins et les haies dès l'aube.",
+     "fog": null,
+     "hours": [
+      {
+       "h": 6,
+       "wind_dir": 117.01551564782858,
+       "wind_speed": 6.537827695626766,
+       "gusts": 8.872638650983573,
+       "wind_dir_800": 296.3076734465781,
+       "wind_speed_800": 11.151532209824039,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 21.00329994596541,
+       "humidity": 85.6256914138794
+      },
+      {
+       "h": 7,
+       "wind_dir": 131.25279764202423,
+       "wind_speed": 4.617589098913595,
+       "gusts": 8.368949246965348,
+       "wind_dir_800": 283.6668393845605,
+       "wind_speed_800": 17.427033700463866,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 100.00329994596541,
+       "humidity": 84.00259017944336
+      },
+      {
+       "h": 8,
+       "wind_dir": 164.25069914583582,
+       "wind_speed": 5.783982100524009,
+       "gusts": 8.005148234590889,
+       "wind_dir_800": 278.4197013113043,
+       "wind_speed_800": 20.528716106733516,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 100.00329994596541,
+       "humidity": 83.24197483062744
+      },
+      {
+       "h": 9,
+       "wind_dir": 257.0241526719183,
+       "wind_speed": 25.183922306913882,
+       "gusts": 30.897021727636456,
+       "wind_dir_800": 296.9290299650129,
+       "wind_speed_800": 18.789343263496345,
+       "visibility": null,
+       "precip": 0.017578125,
+       "cloud_low": 100.00329994596541,
+       "humidity": 85.15183734893799
+      },
+      {
+       "h": 10,
+       "wind_dir": 244.6289707813412,
+       "wind_speed": 18.20092157078907,
+       "gusts": 29.863895474933088,
+       "wind_dir_800": 346.4868780390572,
+       "wind_speed_800": 13.971047323496828,
+       "visibility": null,
+       "precip": 0.091796875,
+       "cloud_low": 100.00329994596541,
+       "humidity": 85.7507095336914
+      },
+      {
+       "h": 11,
+       "wind_dir": 330.1388600151986,
+       "wind_speed": 43.241443783789876,
+       "gusts": 53.17184876035899,
+       "wind_dir_800": 313.3908682486246,
+       "wind_speed_800": 31.3350941503553,
+       "visibility": null,
+       "precip": 8.251953125,
+       "cloud_low": 100.00329994596541,
+       "humidity": 85.60516262054443
+      },
+      {
+       "h": 12,
+       "wind_dir": 335.27089501544833,
+       "wind_speed": 17.110895844642073,
+       "gusts": 52.3492885443382,
+       "wind_dir_800": 314.7142290599352,
+       "wind_speed_800": 37.16482766132951,
+       "visibility": null,
+       "precip": 2.0771484375,
+       "cloud_low": 60.00329994596541,
+       "humidity": 85.40991306304932
+      }
+     ]
+    }
+   }
+  },
+  "hossegor": {
+   "palombe": {
+    "2026-11-28": {
+     "level": "good",
+     "word": "Ça devrait passer",
+     "score": 3,
+     "total": 3,
+     "criteria": [
+      {
+       "ok": true,
+       "label": "Vent de secteur nord à sud-est",
+       "detail": "À 8 h : est, 19 km/h"
+      },
+      {
+       "ok": true,
+       "label": "Pas de pluie dans la matinée",
+       "detail": "0.0 mm entre 7 h et 11 h"
+      },
+      {
+       "ok": true,
+       "label": "Ciel lisible, pas de brume",
+       "detail": "Nuages bas 0 % · pas de brume"
+      },
+      {
+       "ok": true,
+       "label": "Pas de coup de vent",
+       "detail": "Rafales jusqu'à 25 km/h",
+       "blocking": true
+      }
+     ],
+     "window": {
+      "label": "Fenêtre probable",
+      "start": 481,
+      "end": 676,
+      "text": "8 h 01 à 11 h 16"
+     },
+     "sunrise": "8 h 16",
+     "wind": {
+      "dir": 94,
+      "speed": 19,
+      "dir_short": "E",
+      "dir_name": "est",
+      "force": "établi"
+     },
+     "wind_800": {
+      "dir": 131,
+      "speed": 16,
+      "dir_short": "SE"
+     },
+     "reading": "Vent d'est : les vols dérivent vers la côte et longent la dune.",
+     "fog": null,
+     "hours": [
+      {
+       "h": 6,
+       "wind_dir": 97.37939728796482,
+       "wind_speed": 15.22750284327194,
+       "gusts": 23.60310630463064,
+       "wind_dir_800": 109.12340565964843,
+       "wind_speed_800": 13.590326480057467,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 82.62524700164795
+      },
+      {
+       "h": 7,
+       "wind_dir": 94.75106987031177,
+       "wind_speed": 15.029011811502277,
+       "gusts": 20.019430533796548,
+       "wind_dir_800": 117.48654992930904,
+       "wind_speed_800": 15.733547925868937,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 80.80173301696777
+      },
+      {
+       "h": 8,
+       "wind_dir": 93.90281337313354,
+       "wind_speed": 18.582777637615802,
+       "gusts": 24.458243270963433,
+       "wind_dir_800": 131.0816457011009,
+       "wind_speed_800": 16.010315686190214,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 84.0344409942627
+      },
+      {
+       "h": 9,
+       "wind_dir": 99.90864074975252,
+       "wind_speed": 17.73170596053824,
+       "gusts": 24.969042827188968,
+       "wind_dir_800": 136.32195497225177,
+       "wind_speed_800": 13.13353014398762,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 85.43523025512695
+      },
+      {
+       "h": 10,
+       "wind_dir": 102.63197383098304,
+       "wind_speed": 17.190403744624927,
+       "gusts": 24.05302837220952,
+       "wind_dir_800": 135.49372333411628,
+       "wind_speed_800": 13.020962612809786,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 79.77192687988281
+      },
+      {
+       "h": 11,
+       "wind_dir": 112.26797659508884,
+       "wind_speed": 16.070583569258453,
+       "gusts": 23.72004436478019,
+       "wind_dir_800": 145.70873590890398,
+       "wind_speed_800": 14.562598472307497,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 75.69405937194824
+      },
+      {
+       "h": 12,
+       "wind_dir": 108.87706015189178,
+       "wind_speed": 15.70592917520553,
+       "gusts": 22.50980208590627,
+       "wind_dir_800": 154.56352909238058,
+       "wind_speed_800": 15.524603622738207,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 69.32793045043945
+      }
+     ]
+    },
+    "2026-11-29": {
+     "level": "low",
+     "word": "Peu probable",
+     "score": 0,
+     "total": 3,
+     "criteria": [
+      {
+       "ok": false,
+       "label": "Vent de secteur nord à sud-est",
+       "detail": "À 8 h : sud, 8 km/h"
+      },
+      {
+       "ok": false,
+       "label": "Pas de pluie dans la matinée",
+       "detail": "4.1 mm entre 7 h et 11 h"
+      },
+      {
+       "ok": false,
+       "label": "Ciel lisible, pas de brume",
+       "detail": "Nuages bas 100 % · pas de brume"
+      },
+      {
+       "ok": false,
+       "label": "Pas de coup de vent",
+       "detail": "Rafales jusqu'à 55 km/h",
+       "blocking": true
+      }
+     ],
+     "window": {
+      "label": "Fenêtre probable",
+      "start": 483,
+      "end": 678,
+      "text": "8 h 03 à 11 h 18"
+     },
+     "sunrise": "8 h 18",
+     "wind": {
+      "dir": 164,
+      "speed": 8,
+      "dir_short": "S",
+      "dir_name": "sud",
+      "force": "léger"
+     },
+     "wind_800": {
+      "dir": 277,
+      "speed": 18,
+      "dir_short": "O"
+     },
+     "reading": "Vent de face (sud) : les vols passent bas mais s'arrêtent ou se posent vite.",
+     "fog": null,
+     "hours": [
+      {
+       "h": 6,
+       "wind_dir": 131.76551564782858,
+       "wind_speed": 9.462827695626766,
+       "gusts": 11.797638650983572,
+       "wind_dir_800": 294.5129455310374,
+       "wind_speed_800": 11.234091688426956,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 25.00329994596541,
+       "humidity": 86.5944414138794
+      },
+      {
+       "h": 7,
+       "wind_dir": 141.00279764202423,
+       "wind_speed": 7.823839098913595,
+       "gusts": 11.378324246965349,
+       "wind_dir_800": 284.94182865259586,
+       "wind_speed_800": 17.060451427231374,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 100.00329994596541,
+       "humidity": 86.06509017944336
+      },
+      {
+       "h": 8,
+       "wind_dir": 163.50069914583582,
+       "wind_speed": 7.668357100524008,
+       "gusts": 10.423898234590888,
+       "wind_dir_800": 277.3325508853635,
+       "wind_speed_800": 18.263062090907862,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 100.00329994596541,
+       "humidity": 82.36697483062744
+      },
+      {
+       "h": 9,
+       "wind_dir": 266.1491526719183,
+       "wind_speed": 23.187047306913882,
+       "gusts": 28.759521727636457,
+       "wind_dir_800": 296.87205054823875,
+       "wind_speed_800": 17.58173980987183,
+       "visibility": null,
+       "precip": 0.017578125,
+       "cloud_low": 100.00329994596541,
+       "humidity": 89.02683734893799
+      },
+      {
+       "h": 10,
+       "wind_dir": 261.8789707813412,
+       "wind_speed": 11.507171570789069,
+       "gusts": 26.74202047493309,
+       "wind_dir_800": 336.4811535617023,
+       "wind_speed_800": 18.18901066090285,
+       "visibility": null,
+       "precip": 0.12109375,
+       "cloud_low": 100.00329994596541,
+       "humidity": 87.4069595336914
+      },
+      {
+       "h": 11,
+       "wind_dir": 330.3888600151986,
+       "wind_speed": 42.93206878378987,
+       "gusts": 54.54997376035899,
+       "wind_dir_800": 314.8407166087191,
+       "wind_speed_800": 30.368260421490646,
+       "visibility": null,
+       "precip": 4.00390625,
+       "cloud_low": 100.00329994596541,
+       "humidity": 85.57391262054443
+      },
+      {
+       "h": 12,
+       "wind_dir": 336.14589501544833,
+       "wind_speed": 17.082770844642074,
+       "gusts": 50.9711635443382,
+       "wind_dir_800": 313.50744854535907,
+       "wind_speed_800": 38.81784648631488,
+       "visibility": null,
+       "precip": 1.333984375,
+       "cloud_low": 66.00329994596541,
+       "humidity": 85.47241306304932
+      }
+     ]
+    }
+   },
+   "grives": {
+    "2026-11-28": {
+     "level": "good",
+     "word": "Ça devrait passer",
+     "score": 3,
+     "total": 3,
+     "criteria": [
+      {
+       "ok": true,
+       "label": "Vent de nuit porteur (nord-ouest à est)",
+       "detail": "Moyenne de la nuit : est, 14 km/h"
+      },
+      {
+       "ok": true,
+       "label": "Nuit sèche",
+       "detail": "0.0 mm entre 19 h et 7 h"
+      },
+      {
+       "ok": true,
+       "label": "Aube calme et sèche",
+       "detail": "Vent moyen 17 km/h, pluie 0.0 mm (7 h – 10 h)"
+      }
+     ],
+     "window": {
+      "label": "Posées probables",
+      "start": 466,
+      "end": 630,
+      "text": "7 h 46 à 10 h 30"
+     },
+     "sunrise": "8 h 16",
+     "wind": {
+      "dir": 94,
+      "speed": 19,
+      "dir_short": "E",
+      "dir_name": "est",
+      "force": "établi"
+     },
+     "wind_800": {
+      "dir": 131,
+      "speed": 16,
+      "dir_short": "SE"
+     },
+     "reading": "Nuit à vent porteur et sèche : bonne nuit pour une arrivée de grives. Regarde les pins et les haies dès l'aube.",
+     "fog": null,
+     "hours": [
+      {
+       "h": 6,
+       "wind_dir": 97.37939728796482,
+       "wind_speed": 15.22750284327194,
+       "gusts": 23.60310630463064,
+       "wind_dir_800": 109.12340565964843,
+       "wind_speed_800": 13.590326480057467,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 82.62524700164795
+      },
+      {
+       "h": 7,
+       "wind_dir": 94.75106987031177,
+       "wind_speed": 15.029011811502277,
+       "gusts": 20.019430533796548,
+       "wind_dir_800": 117.48654992930904,
+       "wind_speed_800": 15.733547925868937,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 80.80173301696777
+      },
+      {
+       "h": 8,
+       "wind_dir": 93.90281337313354,
+       "wind_speed": 18.582777637615802,
+       "gusts": 24.458243270963433,
+       "wind_dir_800": 131.0816457011009,
+       "wind_speed_800": 16.010315686190214,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 84.0344409942627
+      },
+      {
+       "h": 9,
+       "wind_dir": 99.90864074975252,
+       "wind_speed": 17.73170596053824,
+       "gusts": 24.969042827188968,
+       "wind_dir_800": 136.32195497225177,
+       "wind_speed_800": 13.13353014398762,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 85.43523025512695
+      },
+      {
+       "h": 10,
+       "wind_dir": 102.63197383098304,
+       "wind_speed": 17.190403744624927,
+       "gusts": 24.05302837220952,
+       "wind_dir_800": 135.49372333411628,
+       "wind_speed_800": 13.020962612809786,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 79.77192687988281
+      },
+      {
+       "h": 11,
+       "wind_dir": 112.26797659508884,
+       "wind_speed": 16.070583569258453,
+       "gusts": 23.72004436478019,
+       "wind_dir_800": 145.70873590890398,
+       "wind_speed_800": 14.562598472307497,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 75.69405937194824
+      },
+      {
+       "h": 12,
+       "wind_dir": 108.87706015189178,
+       "wind_speed": 15.70592917520553,
+       "gusts": 22.50980208590627,
+       "wind_dir_800": 154.56352909238058,
+       "wind_speed_800": 15.524603622738207,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 69.32793045043945
+      }
+     ]
+    },
+    "2026-11-29": {
+     "level": "maybe",
+     "word": "Possible",
+     "score": 2,
+     "total": 3,
+     "criteria": [
+      {
+       "ok": false,
+       "label": "Vent de nuit porteur (nord-ouest à est)",
+       "detail": "Moyenne de la nuit : sud-est, 10 km/h"
+      },
+      {
+       "ok": true,
+       "label": "Nuit sèche",
+       "detail": "0.0 mm entre 19 h et 7 h"
+      },
+      {
+       "ok": true,
+       "label": "Aube calme et sèche",
+       "detail": "Vent moyen 13 km/h, pluie 0.1 mm (7 h – 10 h)"
+      }
+     ],
+     "window": {
+      "label": "Posées probables",
+      "start": 468,
+      "end": 630,
+      "text": "7 h 48 à 10 h 30"
+     },
+     "sunrise": "8 h 18",
+     "wind": {
+      "dir": 164,
+      "speed": 8,
+      "dir_short": "S",
+      "dir_name": "sud",
+      "force": "léger"
+     },
+     "wind_800": {
+      "dir": 277,
+      "speed": 18,
+      "dir_short": "O"
+     },
+     "reading": "Conditions moyennes cette nuit : quelques posées possibles, pas de grosse arrivée attendue.",
+     "fog": null,
+     "hours": [
+      {
+       "h": 6,
+       "wind_dir": 131.76551564782858,
+       "wind_speed": 9.462827695626766,
+       "gusts": 11.797638650983572,
+       "wind_dir_800": 294.5129455310374,
+       "wind_speed_800": 11.234091688426956,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 25.00329994596541,
+       "humidity": 86.5944414138794
+      },
+      {
+       "h": 7,
+       "wind_dir": 141.00279764202423,
+       "wind_speed": 7.823839098913595,
+       "gusts": 11.378324246965349,
+       "wind_dir_800": 284.94182865259586,
+       "wind_speed_800": 17.060451427231374,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 100.00329994596541,
+       "humidity": 86.06509017944336
+      },
+      {
+       "h": 8,
+       "wind_dir": 163.50069914583582,
+       "wind_speed": 7.668357100524008,
+       "gusts": 10.423898234590888,
+       "wind_dir_800": 277.3325508853635,
+       "wind_speed_800": 18.263062090907862,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 100.00329994596541,
+       "humidity": 82.36697483062744
+      },
+      {
+       "h": 9,
+       "wind_dir": 266.1491526719183,
+       "wind_speed": 23.187047306913882,
+       "gusts": 28.759521727636457,
+       "wind_dir_800": 296.87205054823875,
+       "wind_speed_800": 17.58173980987183,
+       "visibility": null,
+       "precip": 0.017578125,
+       "cloud_low": 100.00329994596541,
+       "humidity": 89.02683734893799
+      },
+      {
+       "h": 10,
+       "wind_dir": 261.8789707813412,
+       "wind_speed": 11.507171570789069,
+       "gusts": 26.74202047493309,
+       "wind_dir_800": 336.4811535617023,
+       "wind_speed_800": 18.18901066090285,
+       "visibility": null,
+       "precip": 0.12109375,
+       "cloud_low": 100.00329994596541,
+       "humidity": 87.4069595336914
+      },
+      {
+       "h": 11,
+       "wind_dir": 330.3888600151986,
+       "wind_speed": 42.93206878378987,
+       "gusts": 54.54997376035899,
+       "wind_dir_800": 314.8407166087191,
+       "wind_speed_800": 30.368260421490646,
+       "visibility": null,
+       "precip": 4.00390625,
+       "cloud_low": 100.00329994596541,
+       "humidity": 85.57391262054443
+      },
+      {
+       "h": 12,
+       "wind_dir": 336.14589501544833,
+       "wind_speed": 17.082770844642074,
+       "gusts": 50.9711635443382,
+       "wind_dir_800": 313.50744854535907,
+       "wind_speed_800": 38.81784648631488,
+       "visibility": null,
+       "precip": 1.333984375,
+       "cloud_low": 66.00329994596541,
+       "humidity": 85.47241306304932
+      }
+     ]
+    }
+   }
+  },
+  "seignosse": {
+   "palombe": {
+    "2026-11-28": {
+     "level": "good",
+     "word": "Ça devrait passer",
+     "score": 3,
+     "total": 3,
+     "criteria": [
+      {
+       "ok": true,
+       "label": "Vent de secteur nord à sud-est",
+       "detail": "À 8 h : est, 12 km/h"
+      },
+      {
+       "ok": true,
+       "label": "Pas de pluie dans la matinée",
+       "detail": "0.0 mm entre 7 h et 11 h"
+      },
+      {
+       "ok": true,
+       "label": "Ciel lisible, pas de brume",
+       "detail": "Nuages bas 0 % · pas de brume"
+      },
+      {
+       "ok": true,
+       "label": "Pas de coup de vent",
+       "detail": "Rafales jusqu'à 26 km/h",
+       "blocking": true
+      }
+     ],
+     "window": {
+      "label": "Fenêtre probable",
+      "start": 482,
+      "end": 677,
+      "text": "8 h 02 à 11 h 17"
+     },
+     "sunrise": "8 h 17",
+     "wind": {
+      "dir": 87,
+      "speed": 12,
+      "dir_short": "E",
+      "dir_name": "est",
+      "force": "léger"
+     },
+     "wind_800": {
+      "dir": 126,
+      "speed": 16,
+      "dir_short": "SE"
+     },
+     "reading": "Vent d'est : les vols dérivent vers la côte et longent la dune.",
+     "fog": null,
+     "hours": [
+      {
+       "h": 6,
+       "wind_dir": 89.87939728796482,
+       "wind_speed": 9.74312784327194,
+       "gusts": 19.94685630463064,
+       "wind_dir_800": 106.81012886108971,
+       "wind_speed_800": 13.060962523570046,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 85.68774700164795
+      },
+      {
+       "h": 7,
+       "wind_dir": 86.62606987031177,
+       "wind_speed": 10.416511811502279,
+       "gusts": 18.07880553379655,
+       "wind_dir_800": 115.11528523797642,
+       "wind_speed_800": 14.85581678854811,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 85.02048301696777
+      },
+      {
+       "h": 8,
+       "wind_dir": 87.27781337313354,
+       "wind_speed": 12.1984026376158,
+       "gusts": 22.54574327096343,
+       "wind_dir_800": 126.14952920393995,
+       "wind_speed_800": 15.64206515342965,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 86.9094409942627
+      },
+      {
+       "h": 9,
+       "wind_dir": 94.15864074975252,
+       "wind_speed": 11.291080960538238,
+       "gusts": 22.60654282718897,
+       "wind_dir_800": 132.76644270482086,
+       "wind_speed_800": 13.657482499947625,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 84.68523025512695
+      },
+      {
+       "h": 10,
+       "wind_dir": 98.13197383098304,
+       "wind_speed": 11.818528744624928,
+       "gusts": 24.22177837220952,
+       "wind_dir_800": 133.82276615831552,
+       "wind_speed_800": 13.898457430138476,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 78.27192687988281
+      },
+      {
+       "h": 11,
+       "wind_dir": 106.51797659508884,
+       "wind_speed": 12.020583569258452,
+       "gusts": 25.88566936478019,
+       "wind_dir_800": 144.85742496354555,
+       "wind_speed_800": 14.64450710136536,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 71.56905937194824
+      },
+      {
+       "h": 12,
+       "wind_dir": 108.00206015189178,
+       "wind_speed": 10.671554175205529,
+       "gusts": 25.406677085906267,
+       "wind_dir_800": 152.70653478910435,
+       "wind_speed_800": 15.522846462045857,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 66.67168045043945
+      }
+     ]
+    },
+    "2026-11-29": {
+     "level": "low",
+     "word": "Peu probable",
+     "score": 0,
+     "total": 3,
+     "criteria": [
+      {
+       "ok": false,
+       "label": "Vent de secteur nord à sud-est",
+       "detail": "À 8 h : sud, 6 km/h"
+      },
+      {
+       "ok": false,
+       "label": "Pas de pluie dans la matinée",
+       "detail": "1.5 mm entre 7 h et 11 h"
+      },
+      {
+       "ok": false,
+       "label": "Ciel lisible, pas de brume",
+       "detail": "Nuages bas 100 % · pas de brume"
+      },
+      {
+       "ok": true,
+       "label": "Pas de coup de vent",
+       "detail": "Rafales jusqu'à 50 km/h",
+       "blocking": true
+      }
+     ],
+     "window": {
+      "label": "Fenêtre probable",
+      "start": 483,
+      "end": 678,
+      "text": "8 h 03 à 11 h 18"
+     },
+     "sunrise": "8 h 18",
+     "wind": {
+      "dir": 159,
+      "speed": 6,
+      "dir_short": "S",
+      "dir_name": "sud",
+      "force": "calme"
+     },
+     "wind_800": {
+      "dir": 277,
+      "speed": 15,
+      "dir_short": "O"
+     },
+     "reading": "Vent quasi nul : les vols passent à leur hauteur habituelle, la dune ne les concentre pas.",
+     "fog": null,
+     "hours": [
+      {
+       "h": 6,
+       "wind_dir": 119.64051564782858,
+       "wind_speed": 6.565952695626765,
+       "gusts": 9.182013650983572,
+       "wind_dir_800": 294.2513769897305,
+       "wind_speed_800": 11.210870453812086,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 24.50329994596541,
+       "humidity": 86.7194414138794
+      },
+      {
+       "h": 7,
+       "wind_dir": 133.00279764202423,
+       "wind_speed": 6.192589098913595,
+       "gusts": 8.931449246965348,
+       "wind_dir_800": 286.5521478521495,
+       "wind_speed_800": 17.020156156040862,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 99.50329994596541,
+       "humidity": 84.59634017944336
+      },
+      {
+       "h": 8,
+       "wind_dir": 159.25069914583582,
+       "wind_speed": 5.783982100524009,
+       "gusts": 9.580148234590888,
+       "wind_dir_800": 277.4875508829242,
+       "wind_speed_800": 14.865463352025404,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 100.00329994596541,
+       "humidity": 82.42947483062744
+      },
+      {
+       "h": 9,
+       "wind_dir": 155.39915267191827,
+       "wind_speed": 3.6120473069138828,
+       "gusts": 9.606396727636456,
+       "wind_dir_800": 289.39650001533676,
+       "wind_speed_800": 16.98473404695776,
+       "visibility": null,
+       "precip": 0.0205078125,
+       "cloud_low": 100.00329994596541,
+       "humidity": 88.52683734893799
+      },
+      {
+       "h": 10,
+       "wind_dir": 11.878970781341195,
+       "wind_speed": 2.760296570789069,
+       "gusts": 17.01077047493309,
+       "wind_dir_800": 340.33371773314195,
+       "wind_speed_800": 17.89034491863241,
+       "visibility": null,
+       "precip": 0.0625,
+       "cloud_low": 100.00329994596541,
+       "humidity": 90.8444595336914
+      },
+      {
+       "h": 11,
+       "wind_dir": 329.6388600151986,
+       "wind_speed": 26.872693783789874,
+       "gusts": 49.99372376035899,
+       "wind_dir_800": 311.8170774142692,
+       "wind_speed_800": 28.741941831892515,
+       "visibility": null,
+       "precip": 1.3818359375,
+       "cloud_low": 100.00329994596541,
+       "humidity": 90.82391262054443
+      },
+      {
+       "h": 12,
+       "wind_dir": 337.39589501544833,
+       "wind_speed": 9.010895844642073,
+       "gusts": 49.5367885443382,
+       "wind_dir_800": 312.8261280117529,
+       "wind_speed_800": 39.15423497664639,
+       "visibility": null,
+       "precip": 1.345703125,
+       "cloud_low": 77.00329994596541,
+       "humidity": 91.62866306304932
+      }
+     ]
+    }
+   },
+   "grives": {
+    "2026-11-28": {
+     "level": "good",
+     "word": "Ça devrait passer",
+     "score": 3,
+     "total": 3,
+     "criteria": [
+      {
+       "ok": true,
+       "label": "Vent de nuit porteur (nord-ouest à est)",
+       "detail": "Moyenne de la nuit : est, 9 km/h"
+      },
+      {
+       "ok": true,
+       "label": "Nuit sèche",
+       "detail": "0.0 mm entre 19 h et 7 h"
+      },
+      {
+       "ok": true,
+       "label": "Aube calme et sèche",
+       "detail": "Vent moyen 11 km/h, pluie 0.0 mm (7 h – 10 h)"
+      }
+     ],
+     "window": {
+      "label": "Posées probables",
+      "start": 467,
+      "end": 630,
+      "text": "7 h 47 à 10 h 30"
+     },
+     "sunrise": "8 h 17",
+     "wind": {
+      "dir": 87,
+      "speed": 12,
+      "dir_short": "E",
+      "dir_name": "est",
+      "force": "léger"
+     },
+     "wind_800": {
+      "dir": 126,
+      "speed": 16,
+      "dir_short": "SE"
+     },
+     "reading": "Nuit à vent porteur et sèche : bonne nuit pour une arrivée de grives. Regarde les pins et les haies dès l'aube.",
+     "fog": null,
+     "hours": [
+      {
+       "h": 6,
+       "wind_dir": 89.87939728796482,
+       "wind_speed": 9.74312784327194,
+       "gusts": 19.94685630463064,
+       "wind_dir_800": 106.81012886108971,
+       "wind_speed_800": 13.060962523570046,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 85.68774700164795
+      },
+      {
+       "h": 7,
+       "wind_dir": 86.62606987031177,
+       "wind_speed": 10.416511811502279,
+       "gusts": 18.07880553379655,
+       "wind_dir_800": 115.11528523797642,
+       "wind_speed_800": 14.85581678854811,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 85.02048301696777
+      },
+      {
+       "h": 8,
+       "wind_dir": 87.27781337313354,
+       "wind_speed": 12.1984026376158,
+       "gusts": 22.54574327096343,
+       "wind_dir_800": 126.14952920393995,
+       "wind_speed_800": 15.64206515342965,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 86.9094409942627
+      },
+      {
+       "h": 9,
+       "wind_dir": 94.15864074975252,
+       "wind_speed": 11.291080960538238,
+       "gusts": 22.60654282718897,
+       "wind_dir_800": 132.76644270482086,
+       "wind_speed_800": 13.657482499947625,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 84.68523025512695
+      },
+      {
+       "h": 10,
+       "wind_dir": 98.13197383098304,
+       "wind_speed": 11.818528744624928,
+       "gusts": 24.22177837220952,
+       "wind_dir_800": 133.82276615831552,
+       "wind_speed_800": 13.898457430138476,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 78.27192687988281
+      },
+      {
+       "h": 11,
+       "wind_dir": 106.51797659508884,
+       "wind_speed": 12.020583569258452,
+       "gusts": 25.88566936478019,
+       "wind_dir_800": 144.85742496354555,
+       "wind_speed_800": 14.64450710136536,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 71.56905937194824
+      },
+      {
+       "h": 12,
+       "wind_dir": 108.00206015189178,
+       "wind_speed": 10.671554175205529,
+       "gusts": 25.406677085906267,
+       "wind_dir_800": 152.70653478910435,
+       "wind_speed_800": 15.522846462045857,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 0.003299945965409279,
+       "humidity": 66.67168045043945
+      }
+     ]
+    },
+    "2026-11-29": {
+     "level": "good",
+     "word": "Ça devrait passer",
+     "score": 3,
+     "total": 3,
+     "criteria": [
+      {
+       "ok": true,
+       "label": "Vent de nuit porteur (nord-ouest à est)",
+       "detail": "Moyenne de la nuit : sud-est, 7 km/h"
+      },
+      {
+       "ok": true,
+       "label": "Nuit sèche",
+       "detail": "0.0 mm entre 19 h et 7 h"
+      },
+      {
+       "ok": true,
+       "label": "Aube calme et sèche",
+       "detail": "Vent moyen 5 km/h, pluie 0.1 mm (7 h – 10 h)"
+      }
+     ],
+     "window": {
+      "label": "Posées probables",
+      "start": 468,
+      "end": 630,
+      "text": "7 h 48 à 10 h 30"
+     },
+     "sunrise": "8 h 18",
+     "wind": {
+      "dir": 159,
+      "speed": 6,
+      "dir_short": "S",
+      "dir_name": "sud",
+      "force": "calme"
+     },
+     "wind_800": {
+      "dir": 277,
+      "speed": 15,
+      "dir_short": "O"
+     },
+     "reading": "Nuit à vent porteur et sèche : bonne nuit pour une arrivée de grives. Regarde les pins et les haies dès l'aube.",
+     "fog": null,
+     "hours": [
+      {
+       "h": 6,
+       "wind_dir": 119.64051564782858,
+       "wind_speed": 6.565952695626765,
+       "gusts": 9.182013650983572,
+       "wind_dir_800": 294.2513769897305,
+       "wind_speed_800": 11.210870453812086,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 24.50329994596541,
+       "humidity": 86.7194414138794
+      },
+      {
+       "h": 7,
+       "wind_dir": 133.00279764202423,
+       "wind_speed": 6.192589098913595,
+       "gusts": 8.931449246965348,
+       "wind_dir_800": 286.5521478521495,
+       "wind_speed_800": 17.020156156040862,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 99.50329994596541,
+       "humidity": 84.59634017944336
+      },
+      {
+       "h": 8,
+       "wind_dir": 159.25069914583582,
+       "wind_speed": 5.783982100524009,
+       "gusts": 9.580148234590888,
+       "wind_dir_800": 277.4875508829242,
+       "wind_speed_800": 14.865463352025404,
+       "visibility": null,
+       "precip": 0.0,
+       "cloud_low": 100.00329994596541,
+       "humidity": 82.42947483062744
+      },
+      {
+       "h": 9,
+       "wind_dir": 155.39915267191827,
+       "wind_speed": 3.6120473069138828,
+       "gusts": 9.606396727636456,
+       "wind_dir_800": 289.39650001533676,
+       "wind_speed_800": 16.98473404695776,
+       "visibility": null,
+       "precip": 0.0205078125,
+       "cloud_low": 100.00329994596541,
+       "humidity": 88.52683734893799
+      },
+      {
+       "h": 10,
+       "wind_dir": 11.878970781341195,
+       "wind_speed": 2.760296570789069,
+       "gusts": 17.01077047493309,
+       "wind_dir_800": 340.33371773314195,
+       "wind_speed_800": 17.89034491863241,
+       "visibility": null,
+       "precip": 0.0625,
+       "cloud_low": 100.00329994596541,
+       "humidity": 90.8444595336914
+      },
+      {
+       "h": 11,
+       "wind_dir": 329.6388600151986,
+       "wind_speed": 26.872693783789874,
+       "gusts": 49.99372376035899,
+       "wind_dir_800": 311.8170774142692,
+       "wind_speed_800": 28.741941831892515,
+       "visibility": null,
+       "precip": 1.3818359375,
+       "cloud_low": 100.00329994596541,
+       "humidity": 90.82391262054443
+      },
+      {
+       "h": 12,
+       "wind_dir": 337.39589501544833,
+       "wind_speed": 9.010895844642073,
+       "gusts": 49.5367885443382,
+       "wind_dir_800": 312.8261280117529,
+       "wind_speed_800": 39.15423497664639,
+       "visibility": null,
+       "precip": 1.345703125,
+       "cloud_low": 77.00329994596541,
+       "humidity": 91.62866306304932
+      }
+     ]
+    }
+   }
+  }
+ },
+ "flash": {
+  "window_hours": 24,
+  "radius_km": 150,
+  "center": {
+   "lat": 43.64,
+   "lon": -1.45
+  },
+  "precision": "position arrondie à 0,1° (environ 10 km)",
+  "points": [],
+  "derive_dernier_signal_amont": null
+ },
+ "comptages": {
+  "source": "palombe.com / GIFS France",
+  "role": "aval",
+  "season": 2026,
+  "J": {
+   "date": "2026-11-18",
+   "url": "https://www.palombe.com/migration/comptages.php?year=2026",
+   "meteo_code": "meteo1",
+   "note": "La campagne de suivi de la migration s'achève ce jour sur les cols pyrénéens avec des conditions météorologiques variées.",
+   "postes": [
+    {
+     "poste": "Arnéguy",
+     "aller": {
+      "oiseaux": 0,
+      "vols": 0
+     },
+     "retour": {
+      "oiseaux": 0,
+      "vols": 0
+     }
+    },
+    {
+     "poste": "Banca",
+     "aller": {
+      "oiseaux": 12,
+      "vols": 1
+     },
+     "retour": {
+      "oiseaux": 0,
+      "vols": 0
+     }
+    },
+    {
+     "poste": "Sare",
+     "aller": {
+      "oiseaux": 0,
+      "vols": 0
+     },
+     "retour": {
+      "oiseaux": 1,
+      "vols": 1
+     }
+    },
+    {
+     "poste": "Urrugne",
+     "aller": {
+      "oiseaux": 0,
+      "vols": 0
+     },
+     "retour": {
+      "oiseaux": 204,
+      "vols": 5
+     }
+    }
+   ]
+  },
+  "J-1": {
+   "date": "2026-11-17",
+   "url": "https://www.palombe.com/migration/comptages.php?year=2026",
+   "meteo_code": "meteo3",
+   "note": "La migration reste très faible avec peu de mouvements observés sur l'ensemble des cols.",
+   "postes": [
+    {
+     "poste": "Arnéguy",
+     "aller": {
+      "oiseaux": 0,
+      "vols": 0
+     },
+     "retour": {
+      "oiseaux": 0,
+      "vols": 0
+     }
+    },
+    {
+     "poste": "Banca",
+     "aller": {
+      "oiseaux": 3,
+      "vols": 1
+     },
+     "retour": {
+      "oiseaux": 0,
+      "vols": 0
+     }
+    },
+    {
+     "poste": "Sare",
+     "aller": {
+      "oiseaux": 0,
+      "vols": 0
+     },
+     "retour": {
+      "oiseaux": 0,
+      "vols": 0
+     }
+    },
+    {
+     "poste": "Urrugne",
+     "aller": {
+      "oiseaux": 0,
+      "vols": 0
+     },
+     "retour": {
+      "oiseaux": 19,
+      "vols": 1
+     }
+    }
+   ]
+  },
+  "cumul_saison_aller_4_postes": 1028691,
+  "derive_comparaison": {
+   "meme_date": "11-18",
+   "saisons": [
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "moyenne_cumul_aller_a_date": 1732927,
+   "moyenne_jour_aller": 20715,
+   "ecart_cumul_pct": -41
+  }
+ },
+ "observations": {
+  "source": "palombe.com (observations)",
+  "url": "https://www.palombe.com/migration/observations.php",
+  "par_jour": {
+   "2026-11-28": [],
+   "2026-11-27": []
+  }
+ },
+ "meteo": {
+  "labenne": [
+   {
+    "date": "2026-11-28",
+    "vent_max": 10.1452776376158,
+    "rafales_max": 22.80341782718897,
+    "pluie_mm": 0.0,
+    "nuages_moy": 32
+   },
+   {
+    "date": "2026-11-29",
+    "vent_max": 17.422693783789875,
+    "rafales_max": 44.558663544338195,
+    "pluie_mm": 21.2,
+    "nuages_moy": 100
+   }
+  ],
+  "capbreton": [
+   {
+    "date": "2026-11-28",
+    "vent_max": 18.1327776376158,
+    "rafales_max": 25.30654282718897,
+    "pluie_mm": 0.0,
+    "nuages_moy": 32
+   },
+   {
+    "date": "2026-11-29",
+    "vent_max": 43.241443783789876,
+    "rafales_max": 53.17184876035899,
+    "pluie_mm": 16.5,
+    "nuages_moy": 100
+   }
+  ],
+  "hossegor": [
+   {
+    "date": "2026-11-28",
+    "vent_max": 18.582777637615802,
+    "rafales_max": 25.34759109704755,
+    "pluie_mm": 0.0,
+    "nuages_moy": 32
+   },
+   {
+    "date": "2026-11-29",
+    "vent_max": 42.93206878378987,
+    "rafales_max": 54.54997376035899,
+    "pluie_mm": 10.7,
+    "nuages_moy": 100
+   }
+  ],
+  "seignosse": [
+   {
+    "date": "2026-11-28",
+    "vent_max": 12.1984026376158,
+    "rafales_max": 25.88566936478019,
+    "pluie_mm": 0.0,
+    "nuages_moy": 32
+   },
+   {
+    "date": "2026-11-29",
+    "vent_max": 26.872693783789874,
+    "rafales_max": 49.99372376035899,
+    "pluie_mm": 7.0,
+    "nuages_moy": 100
+   }
+  ]
+ },
+ "sources": [
+  {
+   "id": "palombe_flash",
+   "label": "Flash migration",
+   "owner": "palombe.com",
+   "url": "https://www.palombe.com/flash/flash.php",
+   "status": "vide",
+   "rows": 0,
+   "message": "",
+   "checked_at": "2026-11-28T17:46:12Z",
+   "last_ok_at": "2026-11-20T22:10:32Z",
+   "in_season": false
+  },
+  {
+   "id": "palombe_comptages",
+   "label": "Comptages des cols",
+   "owner": "palombe.com / GIFS France",
+   "url": "https://www.palombe.com/migration/comptages.php",
+   "status": "ok",
+   "rows": 224,
+   "message": "",
+   "checked_at": "2026-11-28T01:41:38Z",
+   "last_ok_at": "2026-11-28T01:41:38Z",
+   "in_season": false
+  },
+  {
+   "id": "palombe_observations",
+   "label": "Observations des chasseurs",
+   "owner": "palombe.com",
+   "url": "https://www.palombe.com/migration/observations.php",
+   "status": "ok",
+   "rows": 41,
+   "message": "",
+   "checked_at": "2026-11-28T17:46:17Z",
+   "last_ok_at": "2026-11-28T17:46:17Z",
+   "in_season": false
+  },
+  {
+   "id": "trektellen",
+   "label": "Comptages Organbidexka",
+   "owner": "Trektellen",
+   "url": "https://www.trektellen.org/site/info/2133",
+   "status": "bloquée",
+   "rows": 0,
+   "message": "protection anti-robots (403) sur https://www.trektellen.org/site/totals/2133/2026",
+   "checked_at": "2026-11-28T09:31:51Z",
+   "last_ok_at": null,
+   "in_season": false
+  },
+  {
+   "id": "meteo",
+   "label": "Météo, modèle AROME",
+   "owner": "Météo-France (données publiques)",
+   "url": "https://www.data.gouv.fr/datasets/65bd12d7bfd26e26804204cb",
+   "status": "ok",
+   "rows": 150,
+   "message": "run 2026-11-28T12:00:00Z",
+   "checked_at": "2026-11-28T17:46:11Z",
+   "last_ok_at": "2026-11-28T17:46:11Z",
+   "in_season": true
+  }
+ ]
+}
